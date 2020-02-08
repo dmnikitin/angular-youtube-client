@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ISearchItem } from '../../models/search-item.model';
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchItemComponent implements OnInit {
 
-  constructor() { }
+  public item: ISearchItem;
 
-  ngOnInit() {
+  constructor(item: ISearchItem) {
+    this.item = item;
+  }
+
+  public ngOnInit(): void {
   }
 
 }

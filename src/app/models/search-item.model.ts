@@ -1,45 +1,46 @@
-export interface SearchItem {
+export interface ISearchItem {
   kind: string;
   etag: string;
   id: string;
-  snippet: Snippet;
-  statistics: Statistic;
+  snippet: ISnippet;
+  statistics: IStatistic;
 }
 
-interface ThumbnailView {
+interface IThumbnailView {
   url: string;
   width: number;
   height: number;
 }
 
-interface Thumbnail {
-  default: ThumbnailView;
-  medium: ThumbnailView;
-  high: ThumbnailView;
-  standard: ThumbnailView;
-  maxres: ThumbnailView;
+interface IThumbnail {
+  default: IThumbnailView;
+  medium: IThumbnailView;
+  high: IThumbnailView;
+  standard: IThumbnailView;
+  maxres: IThumbnailView;
 }
 
-interface Localized {
+interface ILocalized {
   title: string;
   description: string;
 }
 
-interface Snippet {
+interface ISnippet {
   publishedAt: string;
   channelId: string;
   title: string;
   description: string;
-  thumbnails: Thumbnail;
+  thumbnails: IThumbnail;
   channelTitle: string;
   tags: string[];
   categoryId: string;
   liveBroadcastContent: string;
-  localized: Localized;
+  localized: ILocalized;
+  defaultLanguage?: string;
   defaultAudioLanguage: string;
 }
 
-interface Statistic {
+interface IStatistic {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
