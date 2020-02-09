@@ -6,7 +6,7 @@ export interface ISearchResponse {
   items: ISearchItem[];
 }
 
-export interface IPageInfo {
+interface IPageInfo {
   totalResults: number;
   resultsPerPage: number;
 }

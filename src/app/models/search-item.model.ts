@@ -6,23 +6,12 @@ export interface ISearchItem {
   statistics: IStatistic;
 }
 
-interface IThumbnailView {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface IThumbnail {
-  default: IThumbnailView;
-  medium: IThumbnailView;
-  high: IThumbnailView;
-  standard: IThumbnailView;
-  maxres: IThumbnailView;
-}
-
-interface ILocalized {
-  title: string;
-  description: string;
+interface IStatistic {
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  favoriteCount: string;
+  commentCount: string;
 }
 
 interface ISnippet {
@@ -40,10 +29,17 @@ interface ISnippet {
   defaultAudioLanguage: string;
 }
 
-interface IStatistic {
-  viewCount: string;
-  likeCount: string;
-  dislikeCount: string;
-  favoriteCount: string;
-  commentCount: string;
+interface IThumbnailView {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface IThumbnail {
+  [key: string]: IThumbnailView;
+}
+
+interface ILocalized {
+  title: string;
+  description: string;
 }
