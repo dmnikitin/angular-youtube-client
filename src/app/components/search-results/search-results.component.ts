@@ -15,5 +15,4 @@ export class SearchResultsComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-
 }
