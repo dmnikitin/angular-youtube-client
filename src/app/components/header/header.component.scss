@@ -1,5 +1,7 @@
 :host {
+  height: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 80% 20%;
+  align-items: center;
 }
