@@ -36,7 +36,11 @@ interface IThumbnailView {
 }
 
 interface IThumbnail {
-  [key: string]: IThumbnailView;
+  default: IThumbnailView;
+  medium: IThumbnailView;
+  high: IThumbnailView;
+  standard: IThumbnailView;
+  maxres: IThumbnailView;
 }
 
 interface ILocalized {
