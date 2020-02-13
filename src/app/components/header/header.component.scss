@@ -5,3 +5,14 @@
   grid-template-columns: 80% 20%;
   align-items: center;
 }
+
+.search-box {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-box {
+  display: flex;
+}

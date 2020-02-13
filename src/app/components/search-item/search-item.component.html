@@ -1,4 +1,11 @@
 <article class="item">
-  <p>search item</p>
+  <img [src]="item.snippet.thumbnails.default.url" alt="card">
+  <section class="item-statistics">
+    <div> {{ item.statistics.viewCount }} </div>
+    <div> {{ item.statistics.likeCount }} </div>
+    <div> {{ item.statistics.dislikeCount }} </div>
+    <div> {{ item.statistics.commentCount }} </div>
+  </section>
+  <h3> {{ item.snippet.title }} </h3>
   <button>More</button>
 </article>
