@@ -12,7 +12,6 @@ export class AppComponent {
 
   public onGetResponse(response: ISearchResponse): void {
     this.searchResponse = response;
-    console.log('done', response);
   }
 
 }

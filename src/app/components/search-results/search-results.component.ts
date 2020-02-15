@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ISearchResponse } from '../../models/search-response.model';
-import { data } from '../../../assets/mockdata';
+
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
@@ -8,7 +8,7 @@ import { data } from '../../../assets/mockdata';
 })
 export class SearchResultsComponent implements OnInit {
 
-  public searchResponse: ISearchResponse = data;
+  @Input() public searchResponse: ISearchResponse;
 
   constructor() {
   }

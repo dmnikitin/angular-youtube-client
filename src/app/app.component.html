@@ -2,5 +2,5 @@
   <app-header (dataLoaded)="onGetResponse($event)"></app-header>
 </header>
 <main>
-  <app-search-results></app-search-results>
+  <app-search-results *ngIf="searchResponse" [searchResponse]="searchResponse"></app-search-results>
 </main>
