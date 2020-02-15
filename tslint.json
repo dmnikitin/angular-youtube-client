@@ -59,10 +59,7 @@
     "no-arg": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": [
-      true,
-      1
-    ],
+    "no-consecutive-blank-lines": [true, 1],
     "no-console": [
       true,
       "debug",
@@ -71,11 +68,7 @@
       "timeEnd",
       "trace"
     ],
-    "no-inferrable-types": [
-      true,
-      "ignore-params",
-      "ignore-properties"
-    ],
+    "no-inferrable-types": [true, "ignore-params", "ignore-properties"],
     "no-construct": true,
     "no-parameter-properties": false,
     "no-debugger": true,
@@ -105,10 +98,7 @@
       "avoid-escape"
     ],
     "radix": true,
-    "semicolon": [
-      true,
-      "always"
-    ],
+    "semicolon": [true, "always"],
     "switch-default": true,
     "trailing-comma": [
       true,
