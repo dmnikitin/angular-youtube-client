@@ -1,5 +1,5 @@
 <header>
-  <app-header></app-header>
+  <app-header (dataLoaded)="onGetResponse($event)"></app-header>
 </header>
 <main>
   <app-search-results></app-search-results>
