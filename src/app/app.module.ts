@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { SortingBoxComponent } from './components/sorting-box/sorting-box.component';
+import { BorderColorDirective } from './directives/border-color-directive.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SortingBoxComponent } from './components/sorting-box/sorting-box.compon
     SearchResultsComponent,
     SearchItemComponent,
     SortingBoxComponent,
+    BorderColorDirective,
   ],
   imports: [
     BrowserModule,

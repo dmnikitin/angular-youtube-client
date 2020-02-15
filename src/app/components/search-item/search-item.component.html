@@ -1,4 +1,4 @@
-<article class="item">
+<article class="item" [appBorderColorDirective]="item.snippet.publishedAt">
   <img [src]="item.snippet.thumbnails.default.url" alt="card">
   <section class="item-statistics">
     <div> {{ item.statistics.viewCount }} </div>
