@@ -8,6 +8,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { SortingBoxComponent } from './components/sorting-box/sorting-box.component';
 import { BorderColorDirective } from './directives/border-color-directive.directive';
+import { DateToColorPipe } from './pipes/date-to-color.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BorderColorDirective } from './directives/border-color-directive.direct
     SearchItemComponent,
     SortingBoxComponent,
     BorderColorDirective,
+    DateToColorPipe,
   ],
   imports: [
     BrowserModule,
