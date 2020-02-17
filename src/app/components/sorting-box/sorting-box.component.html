@@ -1,7 +1,7 @@
 <div class="sorting-box">
   <span>Sorting by</span>
-  <button>date</button>
-  <button>count of views</button>
+  <button #date (click)="sortBy(date.textContent)">date</button>
+  <button #views (click)="sortBy(views.textContent)">count of views</button>
   <span>by word or sentance</span>
-  <input type="text">
+  <input ([ngModel])="filteringValue" (ngModelChange)="filterBy(filteringValue)" type="text">
 </div>

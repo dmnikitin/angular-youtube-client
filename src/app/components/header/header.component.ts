@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ISearchResponse } from '../../models/search-response.model';
 import { data } from '../../../assets/mockdata';
 @Component({
   selector: 'app-header',
@@ -7,7 +8,9 @@ import { data } from '../../../assets/mockdata';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() public dataLoaded: EventEmitter<Event> = new EventEmitter();
+  @Output() public dataLoaded: EventEmitter<ISearchResponse> = new EventEmitter();
+  public isSortingBoxOpen: boolean = false;
+  public loadedData: ISearchResponse = data;
 
   constructor() { }
 
@@ -16,8 +19,11 @@ export class HeaderComponent implements OnInit {
 
   public onFormSubmit(event: Event): void {
     event.preventDefault();
-    console.log('subm');
-    this.dataLoaded.emit(data);
+    this.dataLoaded.emit(this.loadedData);
+  }
+
+  public toggleSortingBoxView(): void {
+    this.isSortingBoxOpen = !this.isSortingBoxOpen;
   }
 
 }
