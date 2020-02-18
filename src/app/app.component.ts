@@ -15,8 +15,8 @@ export class AppComponent {
   public onGetResponse(response: ISearchResponse): void {
     this.searchResponse = response;
   }
-  public onGetUserActionsUpdate(value: IUserActions): void {
-    this.userActions = value;
+  public onUserActionsUpdated(userActions: IUserActions): void {
+    this.userActions = userActions;
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="search-box">
-    <img src="../../../assets/images/logo.jpg" alt="youtube_logo">
+    <img src="../../../assets/images/logo.png" alt="youtube_logo">
     <form action="" (submit)="onFormSubmit($event)">
       <input type="text" name="input" value="Type here" class="search-box__input">
       <button type="submit" class="search-box__button">Search</button>
@@ -14,5 +14,5 @@
     <img src="../../../assets/images/user.jpg" alt="avatar">
   </div>
 </div>
-<app-sorting-box *ngIf="isSortingBoxOpen" (userActions)="onUserInfoPassed($event)">
+<app-sorting-box *ngIf="isSortingBoxOpen" (userActionsUpdated)="onUserActionsUpdated($event)">
 </app-sorting-box>

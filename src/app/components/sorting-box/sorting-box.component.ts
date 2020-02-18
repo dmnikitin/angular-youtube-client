@@ -11,8 +11,7 @@ interface IUserActions {
 })
 export class SortingBoxComponent implements OnInit {
 
-  // userActionEmitted
-  @Output() public userActions: EventEmitter<IUserActions> = new EventEmitter();
+  @Output() public userActionsUpdated: EventEmitter<IUserActions> = new EventEmitter();
   public sortingValue: string = '';
   public filteringValue: string = '';
 
@@ -23,11 +22,11 @@ export class SortingBoxComponent implements OnInit {
 
   public sortBy(value: HTMLInputElement): void {
     this.sortingValue = value.textContent;
-    this.userActions.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
+    this.userActionsUpdated.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
   }
   public filterBy(value: string): void {
     this.filteringValue = value;
-    this.userActions.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
+    this.userActionsUpdated.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
   }
 
 }
