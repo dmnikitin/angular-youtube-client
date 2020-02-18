@@ -1,32 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { colors, dateValues } from '../../assets/magic-values';
 @Pipe({
   name: 'dateToColor'
 })
 export class DateToColorPipe implements PipeTransform {
 
   public transform(value: string): string {
-
-    let color: string;
-    const sixMonths: number = +new Date() - 15768000000;
-    const month: number = +new Date() - 2628000000;
-    const week: number = +new Date() - 604800000;
+    const { sixMonths, month, week } = dateValues;
+    const { red, blue, green, gold, transparent } = colors;
     const published: number = +new Date(value);
-    if (published > sixMonths) {
-      color = '#A54342';
-    } else {
-
-      if (published > month && published < sixMonths) {
-        color = '#F2C94D';
-      }
-      if (published < month) {
-        color = '#27AE61';
-      }
-      if (published < week) {
-        color = '#2F80EC';
-      }
+    switch (true) {
+      case (published < sixMonths): { return red; break; }
+      case (published > week): { return blue; break; }
+      case (published < week && published > month): { return green; break; }
+      case (published < month && published > sixMonths): { return gold; break; }
+      default: return transparent;
     }
-    return color;
   }
 
 }
