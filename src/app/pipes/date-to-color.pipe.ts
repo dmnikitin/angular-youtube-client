@@ -15,6 +15,7 @@ export class DateToColorPipe implements PipeTransform {
     if (published > sixMonths) {
       color = 'red';
     } else {
+
       if (published > month && published < sixMonths) {
         color = 'gold';
       }
