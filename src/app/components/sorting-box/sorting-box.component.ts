@@ -1,5 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
+interface IUserActions {
+  sortingValue: string;
+  filteringValue: string;
+}
 @Component({
   selector: 'app-sorting-box',
   templateUrl: './sorting-box.component.html',
@@ -7,19 +11,23 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SortingBoxComponent implements OnInit {
 
-  @Output() public sortingValue: EventEmitter<string> = new EventEmitter();
-  @Output() public filteringValue: EventEmitter<string> = new EventEmitter();
+  // userActionEmitted
+  @Output() public userActions: EventEmitter<IUserActions> = new EventEmitter();
+  public sortingValue: string = '';
+  public filteringValue: string = '';
 
   constructor() { }
 
   public ngOnInit(): void {
   }
 
-  public sortBy(value: string): void {
-    this.sortingValue.emit(value);
+  public sortBy(value: HTMLInputElement): void {
+    this.sortingValue = value.textContent;
+    this.userActions.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
   }
   public filterBy(value: string): void {
-    this.filteringValue.emit(value);
+    this.filteringValue = value;
+    this.userActions.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
   }
 
 }

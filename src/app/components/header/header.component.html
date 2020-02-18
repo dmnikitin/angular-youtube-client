@@ -10,4 +10,5 @@
   <span>Your Name</span>
   <img src="" alt="avatar">
 </div>
-<app-sorting-box *ngIf="isSortingBoxOpen" (sortingValue)="sortData($event)"></app-sorting-box>
+<app-sorting-box *ngIf="isSortingBoxOpen" (userActions)="onUserInfoPassed($event)">
+</app-sorting-box>

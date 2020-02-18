@@ -10,7 +10,7 @@ export class SearchFilterPipe implements PipeTransform {
     if (!items || !filteringValue) {
       return items;
     }
-    return items.filter((item: ISearchItem) => item.snippet.title.includes(filteringValue));
+    return items.filter((item: ISearchItem) => item.snippet.title.toLowerCase().includes(filteringValue));
   }
 
 }

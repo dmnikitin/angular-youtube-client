@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,6 +9,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { SortingBoxComponent } from './components/sorting-box/sorting-box.component';
 import { BorderColorDirective } from './directives/border-color-directive.directive';
 import { DateToColorPipe } from './pipes/date-to-color.pipe';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,12 @@ import { DateToColorPipe } from './pipes/date-to-color.pipe';
     SortingBoxComponent,
     BorderColorDirective,
     DateToColorPipe,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
