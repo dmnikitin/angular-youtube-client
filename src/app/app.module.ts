@@ -10,6 +10,7 @@ import { SortingBoxComponent } from './components/sorting-box/sorting-box.compon
 import { BorderColorDirective } from './directives/border-color-directive.directive';
 import { DateToColorPipe } from './pipes/date-to-color.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { SearchSortPipe } from './pipes/search-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     BorderColorDirective,
     DateToColorPipe,
     SearchFilterPipe,
+    SearchSortPipe,
   ],
   imports: [
     BrowserModule,
