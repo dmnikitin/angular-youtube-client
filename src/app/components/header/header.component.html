@@ -1,14 +1,18 @@
-<div class="search-box">
-  <img src="" alt="youtube_logo">
-  <form action="" (submit)="onFormSubmit($event)">
-    <input type="text" name="input" value="Type here">
-    <button type="submit">Search</button>
-  </form>
-  <button (click)="toggleSortingBoxView()">Search Settings</button>
-</div>
-<div class="login-box">
-  <span>Your Name</span>
-  <img src="" alt="avatar">
+<div class="container">
+  <div class="search-box">
+    <img src="../../../assets/images/logo.jpg" alt="youtube_logo">
+    <form action="" (submit)="onFormSubmit($event)">
+      <input type="text" name="input" value="Type here" class="search-box__input">
+      <button type="submit" class="search-box__button">Search</button>
+    </form>
+    <button (click)="toggleSortingBoxView()" type="button" class="search-box__button">
+      <img src="../../../assets/images/settings.png" alt="settings">
+    </button>
+  </div>
+  <div class="login-box">
+    <span>Your Name</span>
+    <img src="../../../assets/images/user.jpg" alt="avatar">
+  </div>
 </div>
 <app-sorting-box *ngIf="isSortingBoxOpen" (userActions)="onUserInfoPassed($event)">
 </app-sorting-box>

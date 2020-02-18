@@ -13,17 +13,17 @@ export class DateToColorPipe implements PipeTransform {
     const week: number = +new Date() - 604800000;
     const published: number = +new Date(value);
     if (published > sixMonths) {
-      color = 'red';
+      color = '#A54342';
     } else {
 
       if (published > month && published < sixMonths) {
-        color = 'gold';
+        color = '#F2C94D';
       }
       if (published < month) {
-        color = 'green';
+        color = '#27AE61';
       }
       if (published < week) {
-        color = 'blue';
+        color = '#2F80EC';
       }
     }
     return color;

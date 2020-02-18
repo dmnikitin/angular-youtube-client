@@ -1,18 +1,47 @@
 :host {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 80% 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
+  justify-content: center;
+  background-color: #E5E5E5;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
 }
 
 .search-box {
-  height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  form {
+    margin: 0 20px;
+  }
+
+  &__button {
+    background: #2F80ED;
+    border-radius: 5px;
+    color: #E5E5E5;
+    font-family: Roboto;
+    text-align: center;
+    height: 30px;
+  }
+
+  &__input {
+    background: #EFEFEF;
+    border: none;
+    width: 350px;
+  }
 }
 
 .login-box {
+  margin-left: 100px;
   display: flex;
+  justify-content: space-evenly;
 }
