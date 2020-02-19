@@ -11,6 +11,7 @@ import { BorderColorDirective } from './directives/border-color-directive.direct
 import { DateToColorPipe } from './pipes/date-to-color.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { SearchSortPipe } from './pipes/search-sort.pipe';
+import { LoginBoxComponent } from './components/login-box/login-box.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SearchSortPipe } from './pipes/search-sort.pipe';
     DateToColorPipe,
     SearchFilterPipe,
     SearchSortPipe,
+    LoginBoxComponent,
   ],
   imports: [
     BrowserModule,
