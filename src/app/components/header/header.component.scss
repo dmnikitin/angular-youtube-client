@@ -1,22 +1,12 @@
 :host {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 80% 20%;
   background-color: #E5E5E5;
 }
 
-.container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-}
-
 .search-box {
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,10 +28,4 @@
     border: none;
     width: 350px;
   }
-}
-
-.login-box {
-  margin-left: 100px;
-  display: flex;
-  justify-content: space-evenly;
 }
