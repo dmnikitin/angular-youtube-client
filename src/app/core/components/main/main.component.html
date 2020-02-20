@@ -1,0 +1,8 @@
+<header>
+  <app-header (dataLoaded)="onGetResponse($event)" (userActionsUpdated)="onUserActionsUpdated($event)">
+  </app-header>
+</header>
+<main>
+  <app-search-results *ngIf="searchResponse" [searchResponse]="searchResponse" [userActions]="userActions">
+  </app-search-results>
+</main>
