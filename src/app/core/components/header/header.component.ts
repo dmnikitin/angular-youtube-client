@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { IUserActions } from '../../models/user-actions.model';
 import { LoadDataService } from '../../services/load-data.service';
 
 @Component({
@@ -9,10 +8,7 @@ import { LoadDataService } from '../../services/load-data.service';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() public userActionsUpdated: EventEmitter<IUserActions> = new EventEmitter();
-
   public isSortingBoxOpen: boolean = false;
-  public userActions: IUserActions;
 
   constructor(private loadDataService: LoadDataService) { }
 
@@ -26,11 +22,6 @@ export class HeaderComponent implements OnInit {
 
   public toggleSortingBoxView(): void {
     this.isSortingBoxOpen = !this.isSortingBoxOpen;
-  }
-
-  public onUserActionsUpdated(userActions: IUserActions): void {
-    this.userActions = userActions;
-    this.userActionsUpdated.emit(this.userActions);
   }
 
 }

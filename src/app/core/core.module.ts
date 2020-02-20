@@ -11,6 +11,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { SearchSortPipe } from './pipes/search-sort.pipe';
 import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { LoadDataService } from './services/load-data.service';
+import { UserActionsService } from './services/user-actions.service';
 import { MainComponent } from './components/main/main.component';
 
 @NgModule({
@@ -30,7 +31,7 @@ import { MainComponent } from './components/main/main.component';
     CommonModule,
     FormsModule,
   ],
-  providers: [LoadDataService],
+  providers: [LoadDataService, UserActionsService],
   exports: [MainComponent]
 })
 export class CoreModule { }

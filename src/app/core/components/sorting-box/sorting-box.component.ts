@@ -1,9 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserActionsService } from './../../services/user-actions.service';
+import { IUserActions } from './../../models/user-actions.model';
 
-interface IUserActions {
-  sortingValue: string;
-  filteringValue: string;
-}
 @Component({
   selector: 'app-sorting-box',
   templateUrl: './sorting-box.component.html',
@@ -11,22 +9,24 @@ interface IUserActions {
 })
 export class SortingBoxComponent implements OnInit {
 
-  @Output() public userActionsUpdated: EventEmitter<IUserActions> = new EventEmitter();
-  public sortingValue: string = '';
-  public filteringValue: string = '';
-
-  constructor() { }
+  constructor(private userActionsService: UserActionsService) { }
 
   public ngOnInit(): void {
   }
 
-  public sortBy(value: HTMLInputElement): void {
-    this.sortingValue = value.textContent;
-    this.userActionsUpdated.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
+  public sortBy(sortingValue: HTMLInputElement): void {
+    const newValue: IUserActions = {
+      sortingValue: sortingValue.textContent,
+      filteringValue: this.userActionsService.userActions.filteringValue,
+    };
+    this.userActionsService.userActionsUpdated(newValue);
   }
-  public filterBy(value: string): void {
-    this.filteringValue = value;
-    this.userActionsUpdated.emit({ sortingValue: this.sortingValue, filteringValue: this.filteringValue });
+  public filterBy(filteringValue: string): void {
+    const newValue: IUserActions = {
+      sortingValue: this.userActionsService.userActions.filteringValue,
+      filteringValue,
+    };
+    this.userActionsService.userActionsUpdated(newValue);
   }
 
 }
