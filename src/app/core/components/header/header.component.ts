@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ISearchResponse } from '../../models/search-response.model';
 import { IUserActions } from '../../models/user-actions.model';
-import { data } from '../../../assets/mockdata';
+import { data } from '../../../../assets/mockdata';
 
 @Component({
   selector: 'app-header',

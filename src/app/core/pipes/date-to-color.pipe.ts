@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { colors, dateValues } from '../../assets/magic-values';
+import { colors, dateValues } from '../../../assets/magic-values';
 @Pipe({
   name: 'dateToColor'
 })
