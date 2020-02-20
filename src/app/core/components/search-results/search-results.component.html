@@ -1,4 +1,4 @@
-<div class="search-result">
+<div class="search-result" *ngIf="searchResponse">
   <app-search-item
     *ngFor="let item of (searchResponse.items | searchFilter: userActions.filteringValue | searchSort: userActions.sortingValue)"
     [item]="item">

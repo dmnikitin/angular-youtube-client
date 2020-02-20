@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ISearchResponse } from '../../models/search-response.model';
 import { IUserActions } from './../../models/user-actions.model';
+import { UserActionsService } from './../../services/user-actions.service';
+import { LoadDataService } from './../../services/load-data.service';
 
 @Component({
   selector: 'app-search-results',
@@ -9,14 +11,19 @@ import { IUserActions } from './../../models/user-actions.model';
 })
 export class SearchResultsComponent implements OnInit {
 
-  @Input() public searchResponse: ISearchResponse;
-  @Input() public userActions: IUserActions;
+  public searchResponse: ISearchResponse;
+  public userActions: IUserActions = this.userActionsService.userActions;
 
-  constructor() {
+  constructor(private loadDataService: LoadDataService, private userActionsService: UserActionsService) {
   }
 
   public ngOnInit(): void {
-    this.userActions = { sortingValue: '', filteringValue: '' };
+    this.loadDataService.dataObs.subscribe((response: ISearchResponse) => {
+      this.searchResponse = response;
+    });
+    this.userActionsService.userActionsObs.subscribe((response: IUserActions) => {
+      this.userActions = response;
+    });
   }
 
 }

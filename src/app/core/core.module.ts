@@ -12,7 +12,6 @@ import { SearchSortPipe } from './pipes/search-sort.pipe';
 import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { LoadDataService } from './services/load-data.service';
 import { UserActionsService } from './services/user-actions.service';
-import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +23,16 @@ import { MainComponent } from './components/main/main.component';
     DateToColorPipe,
     SearchFilterPipe,
     SearchSortPipe,
-    LoginBoxComponent,
-    MainComponent,
+    LoginBoxComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
   ],
   providers: [LoadDataService, UserActionsService],
-  exports: [MainComponent]
+  exports: [
+    HeaderComponent,
+    SearchResultsComponent
+  ]
 })
 export class CoreModule { }
