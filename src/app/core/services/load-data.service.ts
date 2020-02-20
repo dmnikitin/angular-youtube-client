@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUserActions } from '../models/user-actions.model';
+import { Subject } from 'rxjs';
 import { ISearchResponse } from '../models/search-response.model';
 import { data } from '../../../assets/mockdata';
 
@@ -7,10 +7,12 @@ import { data } from '../../../assets/mockdata';
 export class LoadDataService {
 
   public data: ISearchResponse;
+  public dataObs: Subject<ISearchResponse> = new Subject<ISearchResponse>();
+
   constructor() { }
 
-  public onFormSubmit(event: Event): void {
-    event.preventDefault();
-    this.data = data;
+  public onFormSubmit(): void {
+    this.dataObs.next(data);
   }
+
 }

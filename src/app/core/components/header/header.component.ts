@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ISearchResponse } from '../../models/search-response.model';
 import { IUserActions } from '../../models/user-actions.model';
-import { data } from '../../../../assets/mockdata';
+import { LoadDataService } from '../../services/load-data.service';
 
 @Component({
   selector: 'app-header',
@@ -10,20 +9,19 @@ import { data } from '../../../../assets/mockdata';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() public dataLoaded: EventEmitter<ISearchResponse> = new EventEmitter();
   @Output() public userActionsUpdated: EventEmitter<IUserActions> = new EventEmitter();
 
   public isSortingBoxOpen: boolean = false;
   public userActions: IUserActions;
 
-  constructor() { }
+  constructor(private loadDataService: LoadDataService) { }
 
   public ngOnInit(): void {
   }
 
   public onFormSubmit(event: Event): void {
     event.preventDefault();
-    this.dataLoaded.emit(data);
+    this.loadDataService.onFormSubmit();
   }
 
   public toggleSortingBoxView(): void {
