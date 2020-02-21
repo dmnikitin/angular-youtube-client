@@ -1,4 +1,4 @@
-import { ISearchItem } from './../models/search-item.model';
+import { ISearchItem } from '../models/search-item.model';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

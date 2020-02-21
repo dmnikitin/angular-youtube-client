@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ISearchResponse } from '../../models/search-response.model';
-import { IUserActions } from './../../models/user-actions.model';
-import { UserActionsService } from './../../services/user-actions.service';
-import { LoadDataService } from './../../services/load-data.service';
+import { IUserActions } from '../../../shared/models/user-actions.model';
+import { UserActionsService } from '../../../core/services/user-actions.service';
+import { LoadDataService } from '../../../core/services/load-data.service';
 
 @Component({
   selector: 'app-search-results',

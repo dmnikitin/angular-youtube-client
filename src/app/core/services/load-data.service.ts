@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ISearchResponse } from '../models/search-response.model';
+import { ISearchResponse } from '../../youtube/models/search-response.model';
 import { data } from '../../../assets/mockdata';
 
 @Injectable()

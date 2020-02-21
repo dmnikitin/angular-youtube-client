@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IUserActions } from './../models/user-actions.model';
+import { IUserActions } from '../../shared/models/user-actions.model';
 
 @Injectable()
 export class UserActionsService {

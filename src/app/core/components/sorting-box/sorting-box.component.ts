@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserActionsService } from './../../services/user-actions.service';
-import { IUserActions } from './../../models/user-actions.model';
+import { IUserActions } from '../../../shared/models/user-actions.model';
 
 @Component({
   selector: 'app-sorting-box',
