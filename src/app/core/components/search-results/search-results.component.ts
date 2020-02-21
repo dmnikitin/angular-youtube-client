@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ISearchResponse } from '../../models/search-response.model';
 import { IUserActions } from './../../models/user-actions.model';
 import { UserActionsService } from './../../services/user-actions.service';
