@@ -1,0 +1,16 @@
+<div class="video-preview">
+  <img [src]="item.snippet.thumbnails.standard.url" alt="video-preview">
+</div>
+<article class="video-info">
+  <div class="video-info__main">
+    <h3> {{item.snippet.title}} </h3>
+    <h5> {{item.snippet.publishedAt | date: 'fullDate'}} </h5>
+    <p> {{item.snippet.description}} </p>
+  </div>
+  <section class="video-info__statistics">
+    <div><img src="../../../../assets/images/viewed.jpg" alt="viewCount"> {{ item.statistics.viewCount }}</div>
+    <div><img src="../../../../assets/images/liked.jpg" alt="likesCount"> {{ item.statistics.likeCount }}</div>
+    <div><img src="../../../../assets/images/dislike.jpg" alt="dislikesCount"> {{ item.statistics.dislikeCount }}</div>
+    <div><img src="../../../../assets/images/comment.jpg" alt="commentCount"> {{ item.statistics.commentCount }}</div>
+  </section>
+</article>
