@@ -1,5 +1,6 @@
-import { ISearchItem } from './../../models/search-item.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ISearchItem } from './../../models/search-item.model';
 import { DetailsDataService } from '../../services/details-data.service';
 
 @Component({
@@ -11,9 +12,12 @@ export class DetailsPageComponent implements OnInit {
 
   public item: ISearchItem;
 
-  constructor(public detailsDataService: DetailsDataService) { }
+  constructor(public router: Router, public detailsDataService: DetailsDataService) { }
 
   public ngOnInit(): void {
+    if (!this.detailsDataService.item) {
+      this.router.navigate(['']);
+    }
     this.item = this.detailsDataService.item;
   }
 

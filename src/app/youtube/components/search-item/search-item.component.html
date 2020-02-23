@@ -8,5 +8,7 @@
     <div> <img src="../../../../assets/images/comment.jpg" alt="commentCount"> {{ item.statistics.commentCount }} </div>
   </section>
   <h3 class="item-title"> {{ item.snippet.title }} </h3>
-  <button class="item-button" type="button">More...</button>
+  <a [routerLink]="['video', item.id]" routerLinkActive="active">
+    <button class="item-button" type="button" (click)="openDetailsPage()">More...</button>
+  </a>
 </article>

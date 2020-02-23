@@ -1,0 +1,7 @@
+.search-result {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
+  width: 70%;
+  margin: 30px auto;
+}
