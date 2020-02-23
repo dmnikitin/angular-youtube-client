@@ -6,6 +6,7 @@ import { SortingBoxComponent } from './components/sorting-box/sorting-box.compon
 import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { LoadDataService } from './services/load-data.service';
 import { UserActionsService } from './services/user-actions.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { UserActionsService } from './services/user-actions.service';
     CommonModule,
     FormsModule,
   ],
-  providers: [LoadDataService, UserActionsService],
+  providers: [LoadDataService, UserActionsService, AuthService],
   exports: [
     HeaderComponent,
   ]

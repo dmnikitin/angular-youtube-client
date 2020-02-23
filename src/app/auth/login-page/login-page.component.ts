@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,16 +8,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private auth: AuthService) { }
 
   public ngOnInit(): void {
   }
   public onLoginAttempt(event: Event, login?: string, password?: string): void {
     event.preventDefault();
-
-    if (login && password) {
-      this.router.navigate(['youtube']);
+    if (!login || !password) {
+      alert('please enter login and password');
+      return;
     }
+    this.auth.checkAuth({ login, password });
   }
 
 }
