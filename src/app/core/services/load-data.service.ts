@@ -6,7 +6,6 @@ import { data } from '../../../assets/mockdata';
 @Injectable()
 export class LoadDataService {
 
-  public data: ISearchResponse;
   public dataObs: Subject<ISearchResponse> = new Subject<ISearchResponse>();
 
   constructor() { }
