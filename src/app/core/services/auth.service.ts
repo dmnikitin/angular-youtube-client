@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
   public authToken: string;
-  public userAuthData: { login: string, password: string };
+  public userLoginObs: Subject<string> = new Subject<string>();
 
   constructor(private router: Router) { }
 
@@ -20,13 +21,21 @@ export class AuthService {
     console.log('token generated');
   }
 
-  public checkAuth(userAuthData: { login: string, password: string }): void {
+  public login(login: string, password: string): void {
 
     if (!localStorage.getItem('authToken')) {
-      this.saveToLocalStorage(userAuthData.login);
+      this.saveToLocalStorage(login);
     }
+    this.userLoginObs.next(login);
     this.authToken = localStorage.getItem('authToken');
     this.router.navigate(['youtube']);
+  }
+
+  public logout(): void {
+    this.authToken = '';
+    this.userLoginObs.next('');
+    localStorage.removeItem('authToken');
+    this.router.navigate(['']);
   }
 
 }
