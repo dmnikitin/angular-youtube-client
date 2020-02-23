@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
       alert('please enter login and password');
       return;
     }
-    this.auth.checkAuth({ login, password });
+    this.auth.login(login, password);
   }
 
 }
