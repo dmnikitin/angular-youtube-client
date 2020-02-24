@@ -27,8 +27,5 @@ import { DetailsDataService } from './services/details-data.service';
     SharedModule,
   ],
   providers: [DetailsDataService],
-  exports: [
-    MainPageComponent
-  ]
 })
 export class YoutubeModule { }

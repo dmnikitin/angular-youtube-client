@@ -16,9 +16,11 @@ export class DetailsPageComponent implements OnInit {
 
   public ngOnInit(): void {
     if (!this.detailsDataService.item) {
-      this.router.navigate(['']);
+      this.router.navigate(['videos']);
     }
     this.item = this.detailsDataService.item;
   }
-
+  public redirect(): void {
+    this.router.navigate(['videos']);
+  }
 }

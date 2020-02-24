@@ -14,7 +14,7 @@ import { IUserActions } from '../../../shared/models/user-actions.model';
 export class MainPageComponent implements OnInit, OnDestroy {
 
   private componentDestroyed: Subject<boolean> = new Subject();
-  public searchResponse: ISearchResponse;
+  public searchResponse: ISearchResponse = this.loadDataService.data;
   public userActions: IUserActions = {
     sortingValue: this.userActionsService.sortingValue,
     filteringValue: this.userActionsService.filteringValue
