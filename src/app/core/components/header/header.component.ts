@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoadDataService } from '../../services/load-data.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   public isSortingBoxOpen: boolean = false;
 
-  constructor(private loadDataService: LoadDataService) { }
+  constructor(private router: Router, private loadDataService: LoadDataService) { }
 
   public ngOnInit(): void {
   }
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
   public onFormSubmit(event: Event): void {
     event.preventDefault();
     this.loadDataService.onFormSubmit();
+    this.router.navigate(['videos']);
   }
 
   public toggleSortingBoxView(): void {

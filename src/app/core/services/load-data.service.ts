@@ -6,12 +6,16 @@ import { data } from '../../../assets/mockdata';
 @Injectable()
 export class LoadDataService {
 
+  private _data: ISearchResponse;
+  get data(): ISearchResponse { return this._data; }
+  set data(value: ISearchResponse) { this._data = value; }
   public dataObs: Subject<ISearchResponse> = new Subject<ISearchResponse>();
 
   constructor() { }
 
   public onFormSubmit(): void {
-    this.dataObs.next(data);
+    this.data = data;
+    this.dataObs.next(this.data);
   }
 
 }

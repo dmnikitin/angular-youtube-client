@@ -28,7 +28,7 @@ export class AuthService {
     }
     this.userLoginObs.next(login);
     this._authToken = localStorage.getItem('authToken');
-    this.router.navigate(['youtube']);
+    this.router.navigate(['videos']);
   }
 
   public logout(): void {
