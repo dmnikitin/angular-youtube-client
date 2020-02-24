@@ -11,12 +11,6 @@ export class BorderColorDirective implements OnInit {
   }
 
   public ngOnInit(): void {
-    console.log('init', this.publishedAt);
     this.renderer.setStyle(this.elementRef.nativeElement, 'borderBottom', `5px solid ${this.publishedAt}`);
   }
-
-  public ngOnChanges() {
-    console.log('changes', this.publishedAt);
-  }
-
 }
