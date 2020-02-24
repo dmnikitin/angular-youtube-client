@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserActionsService } from './../../services/user-actions.service';
-import { IUserActions } from '../../../shared/models/user-actions.model';
 
 @Component({
   selector: 'app-sorting-box',
@@ -15,18 +14,10 @@ export class SortingBoxComponent implements OnInit {
   }
 
   public sortBy(sortingValue: HTMLInputElement): void {
-    const newValue: IUserActions = {
-      sortingValue: sortingValue.textContent,
-      filteringValue: this.userActionsService.userActions.filteringValue,
-    };
-    this.userActionsService.userActionsUpdated(newValue);
+    this.userActionsService.sortingValueUpdated(sortingValue.textContent);
   }
   public filterBy(filteringValue: string): void {
-    const newValue: IUserActions = {
-      sortingValue: this.userActionsService.userActions.filteringValue,
-      filteringValue,
-    };
-    this.userActionsService.userActionsUpdated(newValue);
+    this.userActionsService.filteringValueUpdated(filteringValue);
   }
 
 }

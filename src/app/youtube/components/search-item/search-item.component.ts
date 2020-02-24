@@ -18,7 +18,7 @@ export class SearchItemComponent implements OnInit {
 
   public ngOnInit(): void {
   }
-  public openDetailsPage(id: string): void {
+  public openDetailsPage(): void {
     this.detailsDataService.item = this.item;
   }
 

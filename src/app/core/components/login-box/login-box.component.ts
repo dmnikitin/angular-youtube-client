@@ -18,7 +18,6 @@ export class LoginBoxComponent implements OnInit {
 
   public logout(): void {
     this.authService.logout();
-    console.log(this.authService.userLoginObs);
   }
 
 }

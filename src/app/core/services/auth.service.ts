@@ -5,7 +5,8 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class AuthService {
 
-  public authToken: string;
+  private _authToken: string;
+  get authToken(): string { return this._authToken; }
   public userLoginObs: Subject<string> = new Subject<string>();
 
   constructor(private router: Router) { }
@@ -16,9 +17,8 @@ export class AuthService {
 
   public saveToLocalStorage(name: string): void {
     const authToken: string = this.generateAuthToken(name);
-    this.authToken = authToken;
-    localStorage.setItem('authToken', this.authToken);
-    console.log('token generated');
+    this._authToken = authToken;
+    localStorage.setItem('authToken', this._authToken);
   }
 
   public login(login: string, password: string): void {
@@ -27,12 +27,12 @@ export class AuthService {
       this.saveToLocalStorage(login);
     }
     this.userLoginObs.next(login);
-    this.authToken = localStorage.getItem('authToken');
+    this._authToken = localStorage.getItem('authToken');
     this.router.navigate(['youtube']);
   }
 
   public logout(): void {
-    this.authToken = '';
+    this._authToken = '';
     this.userLoginObs.next('');
     localStorage.removeItem('authToken');
     this.router.navigate(['']);
