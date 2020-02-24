@@ -1,7 +1,7 @@
 :host {
   width: 80%;
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 5% 65% 30%;
   justify-content: center;
   align-items: center;
   margin: 10% auto;
@@ -11,47 +11,52 @@
   background-color: #E5E5E5;
 }
 
-.video-preview {
-  height: 100%;
-  img {
-    width: 100%;
-    height: 100%;
+.video{
+  &-backbutton {
     border: 1px solid transparent;
-    border-radius: 15px;
+    background-color: #E5E5E5;
+    font-size: 72px;
+    height: 100%;
+  }
+  &-preview {
+    height: 100%;
+    &__icon {
+      border: 1px solid transparent;
+    }
   }
 }
 
+
+
 .video-info {
-  height: 90%;
-  margin: 5%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: Roboto;
-  width: 90%;
-  margin: 0 auto;
+  font-family: Roboto; 
 
-  &__main {
+  &-main {
     display: flex;
     flex-flow: row wrap;
-    h3 {
+    padding: 5%;
+    &__h3 {
       width: 70%;
       font-size: 20px;
       font-weight: bold;
     }
-    h5 {
+    &__h5 {
       width: 30%;
       font-size: 10px;
     }
-    p {
+    &__p {
       font-size: 10px;
     }
   }
-  &__statistics {
+  &-statistics {
     display: flex;
     justify-content: space-around;
     font-size: smaller;
-    div {
+    &__iconwrapper {
       flex:1;
       display: flex;
       flex-direction: column;
