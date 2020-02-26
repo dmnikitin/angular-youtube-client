@@ -1,41 +1,49 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
   private _authToken: string;
   get authToken(): string { return this._authToken; }
-  public userLoginObs: Subject<string> = new Subject<string>();
+  set authToken(token: string) { this._authToken = token; }
+  public userLoginObs: BehaviorSubject<string>;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.initialTokenCheck();
+  }
 
   private generateAuthToken(name: string): string {
     return `${name[name.length - 1]}${Math.floor(Math.random() * 100000)}${name[0]}`;
   }
 
-  public saveToLocalStorage(name: string): void {
-    const authToken: string = this.generateAuthToken(name);
-    this._authToken = authToken;
-    localStorage.setItem('authToken', this._authToken);
-  }
-
   public login(login: string, password: string): void {
 
     if (!localStorage.getItem('authToken')) {
-      this.saveToLocalStorage(login);
+      const authToken: string = this.generateAuthToken(login);
+      this.authToken = authToken;
+      localStorage.setItem('authToken', this.authToken);
+      localStorage.setItem('userName', login);
     }
     this.userLoginObs.next(login);
-    this._authToken = localStorage.getItem('authToken');
     this.router.navigate(['videos']);
   }
 
   public logout(): void {
-    this._authToken = '';
+    this.authToken = '';
     this.userLoginObs.next('');
-    localStorage.removeItem('authToken');
     this.router.navigate(['']);
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userName');
   }
 
+  public initialTokenCheck(): void {
+    const authToken: string | undefined = localStorage.getItem('authToken');
+    const userName: string | undefined = localStorage.getItem('userName');
+    if (authToken) {
+      this.authToken = authToken;
+    }
+    this.userLoginObs = new BehaviorSubject<string>(userName ? userName : '');
+  }
 }

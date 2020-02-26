@@ -5,13 +5,15 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent },
   {
     path: 'videos',
     loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule),
     canLoad: [AuthGuard]
   },
-  { path: '**', component: NotFoundComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
