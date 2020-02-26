@@ -16,8 +16,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
   private componentDestroyed: Subject<boolean> = new Subject();
   public searchResponse: ISearchResponse = this.loadDataService.data;
   public userActions: IUserActions = {
-    sortingValue: this.userActionsService.sortingValue,
-    filteringValue: this.userActionsService.filteringValue
+    sortingValue: this.userActionsService.userActions.sortingValue,
+    filteringValue: this.userActionsService.userActions.filteringValue
   };
 
   constructor(private loadDataService: LoadDataService, private userActionsService: UserActionsService) {
@@ -26,13 +26,13 @@ export class MainPageComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.loadDataService.dataObs
       .pipe(takeUntil(this.componentDestroyed))
-      .subscribe((response: ISearchResponse) => {
-        this.searchResponse = response;
+      .subscribe((searchResponse: ISearchResponse) => {
+        this.searchResponse = searchResponse;
       });
     this.userActionsService.userActionsObs
       .pipe(takeUntil(this.componentDestroyed))
-      .subscribe((response: IUserActions) => {
-        this.userActions = response;
+      .subscribe((userActions: IUserActions) => {
+        this.userActions = userActions;
       });
   }
 

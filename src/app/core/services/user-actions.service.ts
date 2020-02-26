@@ -5,23 +5,21 @@ import { IUserActions } from '../../shared/models/user-actions.model';
 @Injectable()
 export class UserActionsService {
 
-  private _sortingValue: string = '';
-  private _filteringValue: string = '';
-  get sortingValue(): string { return this._sortingValue; }
-  get filteringValue(): string { return this._filteringValue; }
-  set sortingValue(sortingValue: string) { this._sortingValue = sortingValue; }
-  set filteringValue(filteringValue: string) { this._filteringValue = filteringValue; }
+  private _userActions: IUserActions = { sortingValue: '', filteringValue: '' };
+  get userActions(): IUserActions { return this._userActions; }
+  set userActions(userActions: IUserActions) { this._userActions = userActions; }
 
-  public userActionsObs: Subject<IUserActions> = new Subject<IUserActions>();
+  public userActionsObs: Subject<IUserActions> = new Subject<IUserActions>(
+  );
 
   constructor() { }
 
   public sortingValueUpdated(sortingValue: string): void {
-    this.sortingValue = sortingValue;
-    this.userActionsObs.next({ sortingValue, filteringValue: this.filteringValue });
+    this.userActions = { ...this.userActions, sortingValue };
+    this.userActionsObs.next(this.userActions);
   }
   public filteringValueUpdated(filteringValue: string): void {
-    this.filteringValue = filteringValue;
-    this.userActionsObs.next({ sortingValue: this.sortingValue, filteringValue });
+    this.userActions = { ...this.userActions, filteringValue };
+    this.userActionsObs.next(this.userActions);
   }
 }
