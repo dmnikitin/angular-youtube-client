@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,9 +9,15 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   public ngOnInit(): void {
+    this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
+      if (isAuthenticated) {
+        this.router.navigate(['videos']);
+      }
+    });
+
   }
   public onLoginAttempt(event: Event, login?: string, password?: string): void {
     event.preventDefault();
