@@ -11,3 +11,9 @@ export const colors: { [key: string]: string } = {
   gold: '#F2C94D',
   transparent: 'transparent'
 };
+
+export const numbers: { [key: string]: number } = {
+  thousand: 1000,
+  million: 1000000,
+  billion: 1000000000
+};

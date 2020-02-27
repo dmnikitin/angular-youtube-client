@@ -11,19 +11,19 @@
   <section class="video-info-statistics">
     <div class="video-info-statistics__iconwrapper">
       <img src="../../../../assets/images/viewed.jpg" alt="viewCount">
-      {{ item.statistics.viewCount }}
+      {{ item.statistics.viewCount | countTrim }}
     </div>
     <div class="video-info-statistics__iconwrapper">
       <img src="../../../../assets/images/liked.jpg" alt="likesCount">
-      {{ item.statistics.likeCount }}
+      {{ item.statistics.likeCount | countTrim }}
     </div>
     <div class="video-info-statistics__iconwrapper">
       <img src="../../../../assets/images/dislike.jpg" alt="dislikesCount">
-      {{ item.statistics.dislikeCount }}
+      {{ item.statistics.dislikeCount | countTrim }}
     </div>
     <div class="video-info-statistics__iconwrapper">
       <img src="../../../../assets/images/comment.jpg" alt="commentCount">
-      {{ item.statistics.commentCount }}
+      {{ item.statistics.commentCount | countTrim }}
     </div>
   </section>
 </article>

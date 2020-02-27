@@ -10,6 +10,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { DetailsDataService } from './services/details-data.service';
+import { CountTrimPipe } from './pipes/views-count-trim.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DetailsDataService } from './services/details-data.service';
     DateToColorPipe,
     SearchFilterPipe,
     SearchSortPipe,
+    CountTrimPipe,
   ],
   imports: [
     CommonModule,
