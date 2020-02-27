@@ -23,7 +23,7 @@ export class AuthService {
       localStorage.setItem('authToken', this.authToken);
       localStorage.setItem('userName', login);
     }
-
+    this.isAuthenticated = true;
     this.userLoginObs.next(login);
     this.router.navigate(['videos']);
   }

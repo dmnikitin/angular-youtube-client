@@ -6,7 +6,7 @@ import { SortingBoxComponent } from './components/sorting-box/sorting-box.compon
 import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { LoadDataService } from './services/load-data.service';
 import { UserActionsService } from './services/user-actions.service';
-import { AuthService } from '../auth/services/auth.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { AuthService } from '../auth/services/auth.service';
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule
   ],
   providers: [LoadDataService, UserActionsService],
   exports: [

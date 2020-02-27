@@ -15,6 +15,7 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) { }
 
   public ngOnInit(): void {
+    this.authService.checkAuthentication();
     this.authService.userLoginObs
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((userName: string) => {
@@ -30,5 +31,4 @@ export class LoginBoxComponent implements OnInit, OnDestroy {
     this.componentDestroyed.next(true);
     this.componentDestroyed.complete();
   }
-
 }
