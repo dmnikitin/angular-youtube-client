@@ -1,12 +1,18 @@
-<button (click)="redirect()" class="video-backbutton"> b </button>
+<button (click)="redirect()" class="video-backbutton"> ◄ </button>
 <div class="video-preview">
-  <img [src]="item.snippet.thumbnails.standard.url" class="video-preview__icon" alt="video-preview">
+  <img [src]="item.snippet.thumbnails.standard.url" class="video-preview__image" alt="video-preview">
 </div>
 <article class="video-info" [appBorderColorDirective]="item.snippet.publishedAt | dateToColor">
   <div class="video-info-main">
-    <h3 class="video-info-main__h3"> {{item.snippet.title}} </h3>
-    <h5 class="video-info-main__h5"> {{item.snippet.publishedAt | date: 'fullDate'}} </h5>
-    <p class="video-info-main__p"> {{item.snippet.description}} </p>
+    <div class="video-info-main__text">
+      <h3 class="video-info-main__h3"> {{item.snippet.title}} </h3>
+    </div>
+    <div class="video-info-main__text">
+      <h5 class="video-info-main__h5"> {{item.snippet.publishedAt | date: 'fullDate'}} </h5>
+    </div>
+    <div class="video-info-main__text">
+      <p class="video-info-main__p"> {{item.snippet.description}} </p>
+    </div>
   </div>
   <section class="video-info-statistics">
     <div class="video-info-statistics__iconwrapper">
