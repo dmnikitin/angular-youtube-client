@@ -16,7 +16,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
   private componentDestroyed: Subject<boolean> = new Subject();
   public searchResponse: ISearchResponse = this.loadDataService.data;
   public userActions: IUserActions = {
-    sortingValue: this.userActionsService.userActions.sortingValue,
+    isSortingByDate: this.userActionsService.userActions.isSortingByDate,
     filteringValue: this.userActionsService.userActions.filteringValue,
     isAscending: this.userActionsService.userActions.isAscending
   };
@@ -33,7 +33,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     this.userActionsService.userActionsObs
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((userActions: IUserActions) => {
-        this.userActions = userActions;
+        this.userActions = { ...userActions };
       });
   }
 

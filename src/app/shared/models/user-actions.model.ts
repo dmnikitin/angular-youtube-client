@@ -1,5 +1,5 @@
 export interface IUserActions {
-  sortingValue: string;
   filteringValue: string;
+  isSortingByDate: boolean;
   isAscending: boolean;
 }

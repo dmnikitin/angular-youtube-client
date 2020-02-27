@@ -7,14 +7,15 @@ import { UserActionsService } from './../../services/user-actions.service';
   styleUrls: ['./sorting-box.component.scss']
 })
 export class SortingBoxComponent implements OnInit {
-
+  public sortingArrowShow: { date: boolean, views: boolean } = { date: true, views: false };
   constructor(private userActionsService: UserActionsService) { }
 
   public ngOnInit(): void {
   }
 
-  public sortBy(sortingValue: HTMLInputElement): void {
-    this.userActionsService.sortingValueUpdated(sortingValue.textContent);
+  public sortByDate(isSortingByDate: boolean): void {
+    this.sortingArrowShow = { date: isSortingByDate, views: !isSortingByDate };
+    this.userActionsService.sortingValueUpdated(isSortingByDate);
   }
   public filterBy(filteringValue: string): void {
     this.userActionsService.filteringValueUpdated(filteringValue);

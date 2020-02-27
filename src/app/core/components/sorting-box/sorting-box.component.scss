@@ -1,27 +1,41 @@
 .sorting-box {
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   background-color: #E5E5E5;
   height: 5vh;
 
-  input {
+ 
+
+  &-button {
+    max-width: 110px;
+    margin: 0 20px;
+    &__button {
+      
+      height: 20px;
+      background-color: transparent;
+      border: none;
+      color: blue;
+      text-decoration: underline;
+  
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__span {
+      font-weight: bold;
+    }
+   
+  }
+
+  &-input {
     width: 350px;
     height: 20px;
     background: #EFEFEF;
     border: none;
   }
-
-  button {
-    height: 20px;
-    background-color: transparent;
-    border: none;
-    color: blue;
-    text-decoration: underline;
-    margin: 0 20px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
+ 
 }
+
