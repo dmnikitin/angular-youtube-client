@@ -17,7 +17,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
   public searchResponse: ISearchResponse = this.loadDataService.data;
   public userActions: IUserActions = {
     sortingValue: this.userActionsService.userActions.sortingValue,
-    filteringValue: this.userActionsService.userActions.filteringValue
+    filteringValue: this.userActionsService.userActions.filteringValue,
+    isAscending: this.userActionsService.userActions.isAscending
   };
 
   constructor(private loadDataService: LoadDataService, private userActionsService: UserActionsService) {

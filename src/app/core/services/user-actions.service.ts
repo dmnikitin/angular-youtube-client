@@ -5,7 +5,7 @@ import { IUserActions } from '../../shared/models/user-actions.model';
 @Injectable()
 export class UserActionsService {
 
-  private _userActions: IUserActions = { sortingValue: '', filteringValue: '' };
+  private _userActions: IUserActions = { sortingValue: '', filteringValue: '', isAscending: false };
   get userActions(): IUserActions { return this._userActions; }
   set userActions(userActions: IUserActions) { this._userActions = userActions; }
 
@@ -15,7 +15,7 @@ export class UserActionsService {
   constructor() { }
 
   public sortingValueUpdated(sortingValue: string): void {
-    this.userActions = { ...this.userActions, sortingValue };
+    this.userActions = { ...this.userActions, isAscending: !this.userActions.isAscending, sortingValue };
     this.userActionsObs.next(this.userActions);
   }
   public filteringValueUpdated(filteringValue: string): void {
