@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
@@ -7,6 +7,7 @@ import { SortingBoxComponent } from './components/sorting-box/sorting-box.compon
 import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { LoadDataService } from './services/load-data.service';
 import { UserActionsService } from './services/user-actions.service';
+import { ApiInterceptor } from './interceptors/api.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,11 @@ import { UserActionsService } from './services/user-actions.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [LoadDataService, UserActionsService],
+  providers: [
+    LoadDataService,
+    UserActionsService,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
+  ],
   exports: [
     HeaderComponent,
   ]
