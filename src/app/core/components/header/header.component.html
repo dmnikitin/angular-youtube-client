@@ -2,7 +2,7 @@
   <img src="../../../assets/images/logo.png" alt="youtube_logo">
   <form action="" (submit)="onFormSubmit($event)">
     <input type="text" name="input" value="Type here" class="search-box__input" [(ngModel)]="searchingQuery"
-      (ngModelChange)="sendRequest(searchingQuery)">
+      (ngModelChange)="updateQuery(searchingQuery)">
   </form>
   <button (click)="toggleSortingBoxView()" type="button" class="search-box__button">
     <img src="../../../assets/images/settings.png" alt="settings">
