@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
@@ -16,6 +17,7 @@ import { UserActionsService } from './services/user-actions.service';
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [LoadDataService, UserActionsService],
   exports: [

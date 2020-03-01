@@ -16,10 +16,14 @@ export class HeaderComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public onFormSubmit(event: Event): void {
-    event.preventDefault();
-    this.loadDataService.onFormSubmit();
-    this.router.navigate(['videos']);
+  // public onFormSubmit(event: Event): void {
+  //   event.preventDefault();
+  //   this.loadDataService.onFormSubmit();
+  //   this.router.navigate(['videos']);
+  // }
+
+  public sendRequest(query: string): void {
+    this.loadDataService.getData(query);
   }
 
   public toggleSortingBoxView(): void {
