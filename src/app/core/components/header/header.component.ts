@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { Subject, of } from 'rxjs';
+import { debounceTime, takeUntil, switchMap } from 'rxjs/operators';
 import { LoadDataService } from '../../services/load-data.service';
+import { ISearchResponse } from './../../../youtube/models/search-response.model';
 
 @Component({
   selector: 'app-header',
@@ -18,9 +18,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.loadDataService.searchQuery
-      .pipe(debounceTime(2000))
-      .pipe(takeUntil(this.componentDestroyed))
-      .subscribe((query: string) => this.loadDataService.getData(query));
+      .pipe(
+        debounceTime(2000),
+        switchMap((query: string) => {
+          return query.length > 3
+            ? this.loadDataService.getData(query)
+            : of({});
+        }),
+        takeUntil(this.componentDestroyed)
+      )
+      .subscribe((data: ISearchResponse) => {
+        this.loadDataService.data = data;
+        this.loadDataService.dataObs.next(data);
+      });
   }
 
   public ngOnDestroy(): void {
