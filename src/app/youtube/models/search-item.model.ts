@@ -6,6 +6,18 @@ export interface ISearchItem {
   statistics: IStatistic;
 }
 
+export interface ISearchItemInitial {
+  kind: string;
+  etag: string;
+  id: IId;
+  snippet: ISnippet;
+}
+
+interface IId {
+  kind: string;
+  videoId: string;
+}
+
 interface IStatistic {
   viewCount: string;
   likeCount: string;
