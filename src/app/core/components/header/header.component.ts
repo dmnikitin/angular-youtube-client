@@ -1,6 +1,7 @@
-import { debounceTime } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import { LoadDataService } from '../../services/load-data.service';
 
 @Component({
@@ -8,16 +9,23 @@ import { LoadDataService } from '../../services/load-data.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
+  private componentDestroyed: Subject<boolean> = new Subject();
   public isSortingBoxOpen: boolean = false;
 
-  constructor(private router: Router, private loadDataService: LoadDataService) { }
+  constructor(private loadDataService: LoadDataService) { }
 
   public ngOnInit(): void {
     this.loadDataService.searchQuery
       .pipe(debounceTime(2000))
+      .pipe(takeUntil(this.componentDestroyed))
       .subscribe((query: string) => this.loadDataService.getData(query));
+  }
+
+  public ngOnDestroy(): void {
+    this.componentDestroyed.next(true);
+    this.componentDestroyed.complete();
   }
 
   public updateQuery(query: string): void {
@@ -27,5 +35,4 @@ export class HeaderComponent implements OnInit {
   public toggleSortingBoxView(): void {
     this.isSortingBoxOpen = !this.isSortingBoxOpen;
   }
-
 }
