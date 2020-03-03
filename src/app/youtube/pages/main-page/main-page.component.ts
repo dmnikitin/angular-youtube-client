@@ -15,11 +15,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   private componentDestroyed: Subject<boolean> = new Subject();
   public searchResponse: ISearchResponse = this.loadDataService.data;
-  public userActions: IUserActions = {
-    isSortingByDate: this.userActionsService.userActions.isSortingByDate,
-    filteringValue: this.userActionsService.userActions.filteringValue,
-    isAscending: this.userActionsService.userActions.isAscending
-  };
+  public userActions: IUserActions;
 
   constructor(private loadDataService: LoadDataService, private userActionsService: UserActionsService) {
   }
@@ -30,7 +26,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
       .subscribe((searchResponse: ISearchResponse) => {
         this.searchResponse = searchResponse;
       });
-    this.userActionsService.userActionsObs
+    this.userActionsService.userActions
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((userActions: IUserActions) => {
         this.userActions = { ...userActions };
