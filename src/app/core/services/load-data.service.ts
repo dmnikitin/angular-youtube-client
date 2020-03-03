@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, BehaviorSubject, Subject, from, EMPTY } from 'rxjs';
-import { catchError, map, reduce, tap, pluck, switchMap } from 'rxjs/operators';
+import { Observable, Subject, from, EMPTY } from 'rxjs';
+import { catchError, map, reduce, pluck, switchMap } from 'rxjs/operators';
 import { ISearchResponse } from '../../youtube/models/search-response.model';
-import { ISearchItem } from './../../youtube/models/search-item.model';
+import { ISearchItemInitial } from './../../youtube/models/search-item.model';
 
 @Injectable()
 export class LoadDataService {
@@ -30,8 +30,8 @@ export class LoadDataService {
       .pipe(
         pluck('items'),
         switchMap((items: []) => from(items)),
-        map((item) => item.id.videoId),
-        reduce((totalScore, current) => totalScore + ',' + current),
+        map((item: ISearchItemInitial) => item.id.videoId),
+        reduce((totalStr, current) => totalStr + ',' + current),
         switchMap((idString: string) => {
           const videoParams: HttpParams = new HttpParams()
             .set('part', 'snippet,statistics')
