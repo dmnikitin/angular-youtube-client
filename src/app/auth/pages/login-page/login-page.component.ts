@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -9,23 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router) { }
+  private authForm: FormGroup;
+  constructor(private auth: AuthService, private router: Router, private fb: FormBuilder) { }
 
   public ngOnInit(): void {
+    this.initForm();
     this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
       if (isAuthenticated) {
         this.router.navigate(['videos']);
       }
     });
-
   }
-  public onLoginAttempt(event: Event, login?: string, password?: string): void {
-    event.preventDefault();
-    if (!login || !password) {
-      alert('please enter login and password');
-      return;
-    }
-    this.auth.login(login, password);
+
+  public initForm(): void {
+    this.authForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(4)]]
+    });
+  }
+
+  public onLoginAttempt(): void {
+    const { name, password } = this.authForm.value;
+    this.auth.login(name, password);
   }
 
 }

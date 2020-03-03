@@ -1,8 +1,14 @@
 <h3>Login</h3>
-<form action="" (submit)="onLoginAttempt($event, login.value, password.value)">
+<form action="" [formGroup]="authForm" (ngSubmit)="onLoginAttempt()">
   <label for="login">login</label>
-  <input #login id="login" type="text">
+  <input id="login" type="text" formControlName="name">
+  <div class="alert" *ngIf="authForm.controls['name'].invalid && authForm.controls['name'].touched">
+    provide not less than 4 symbols
+  </div>
   <label for="password">password</label>
-  <input #password id="password" type="password">
-  <button type="submit">login</button>
+  <input id="password" type="password" formControlName="password">
+  <div class="alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">
+    provide not less than 4 symbols
+  </div>
+  <button type="submit" [disabled]="!authForm.valid">login</button>
 </form>
