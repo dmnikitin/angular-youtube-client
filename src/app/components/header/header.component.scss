@@ -1,18 +1,31 @@
 :host {
-  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-rows: 1fr 1fr;
   grid-template-columns: 80% 20%;
-  align-items: center;
+  background-color: #E5E5E5;
 }
 
 .search-box {
-  height: 100%;
+  height: 10vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-}
+  form {
+    margin: 0 20px;
+  }
 
-.login-box {
-  display: flex;
+  &__button {
+    background: #2F80ED;
+    border-radius: 5px;
+    color: #E5E5E5;
+    font-family: Roboto;
+    text-align: center;
+    height: 30px;
+  }
+
+  &__input {
+    background: #EFEFEF;
+    border: none;
+    width: 350px;
+  }
 }

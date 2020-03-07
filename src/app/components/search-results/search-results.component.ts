@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ISearchResponse } from '../../models/search-response.model';
+import { IUserActions } from './../../models/user-actions.model';
 
 @Component({
   selector: 'app-search-results',
@@ -8,12 +9,14 @@ import { ISearchResponse } from '../../models/search-response.model';
 })
 export class SearchResultsComponent implements OnInit {
 
-  public searchResponse: ISearchResponse;
+  @Input() public searchResponse: ISearchResponse;
+  @Input() public userActions: IUserActions;
 
   constructor() {
   }
 
   public ngOnInit(): void {
+    this.userActions = { sortingValue: '', filteringValue: '' };
   }
 
 }

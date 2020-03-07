@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ISearchResponse } from './models/search-response.model';
+import { IUserActions } from './models/user-actions.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  public searchResponse: ISearchResponse;
+  public userActions: IUserActions;
+
+  public onGetResponse(response: ISearchResponse): void {
+    this.searchResponse = response;
+  }
+  public onUserActionsUpdated(userActions: IUserActions): void {
+    this.userActions = userActions;
+  }
 
 }
