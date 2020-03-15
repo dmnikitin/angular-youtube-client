@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { IUserActions } from '../../../shared/models/user-actions.model';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit, OnDestroy {
+export class MainPageComponent implements OnInit {
 
   private componentDestroyed: Subject<boolean> = new Subject();
   public searchResponse: ISearchResponse = this.loadDataService.data;
@@ -20,10 +20,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: ActivatedRoute,
+    private route: Router,
     private loadDataService: LoadDataService, private userActionsService: UserActionsService) {
   }
 
   public ngOnInit(): void {
+    console.log('init main');
     this.loadDataService.dataObs
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((searchResponse: ISearchResponse) => {
@@ -34,12 +36,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
       .subscribe((userActions: IUserActions) => {
         this.userActions = { ...userActions };
       });
-    this.router.queryParams.subscribe(e => console.log(e));
-
+    this.router.queryParams.subscribe(e => {
+      this.route.navigate(['/videos'], { queryParams: e });
+    });
   }
 
-  public ngOnDestroy(): void {
-    // this.componentDestroyed.next(true);
-    // this.componentDestroyed.complete();
-  }
 }

@@ -15,7 +15,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private componentDestroyed: Subject<boolean> = new Subject();
   public isSortingBoxOpen: boolean = false;
 
-  constructor(private loadDataService: LoadDataService, private router: Router) { }
+  constructor(
+    private loadDataService: LoadDataService,
+    private router: Router
+  ) { }
 
   public ngOnInit(): void {
     this.loadDataService.searchQuery

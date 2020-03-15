@@ -25,7 +25,7 @@ export class AuthService {
     }
     this.isAuthenticated = true;
     this.userLoginObs.next(login);
-    this.router.navigate(['videos']);
+    this.router.navigate(['/videos']);
   }
 
   public logout(): void {

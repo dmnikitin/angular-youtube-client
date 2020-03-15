@@ -12,6 +12,7 @@ export class LoginBoxComponent implements OnInit {
   constructor(private authService: AuthService, private loadDataService: LoadDataService) { }
 
   public ngOnInit(): void {
+    this.authService.checkAuthentication();
   }
 
   public logout(): void {
@@ -22,5 +23,4 @@ export class LoginBoxComponent implements OnInit {
       }
     }
   }
-
 }

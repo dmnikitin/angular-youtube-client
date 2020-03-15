@@ -43,4 +43,3 @@ export class DetailsPageComponent implements OnInit {
       });
   }
 }
-

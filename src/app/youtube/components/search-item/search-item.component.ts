@@ -18,7 +18,7 @@ export class SearchItemComponent implements OnInit {
   public ngOnInit(): void {
   }
   public openDetailsPage(id: string): void {
-    this.router.navigate(['/watch'], { queryParams: { v: id } });
+    this.router.navigate(['/videos', 'watch'], { queryParams: { v: id } });
   }
 
 }

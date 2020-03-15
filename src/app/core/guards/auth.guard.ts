@@ -14,7 +14,6 @@ export class AuthGuard implements CanLoad {
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
 
     return this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
-      console.log('guard');
       if (isAuthenticated) {
         return true;
       } else {

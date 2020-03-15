@@ -1,7 +1,7 @@
 :host {
   width: 80%;
   display: grid;
-  grid-template-columns: 5% auto 30%;
+  grid-template-columns: 5% 65% 30%;
   justify-content: space-evenly;
   align-items: center;
   margin: 10% auto;
@@ -13,7 +13,7 @@
   @media (max-width: 1200px) {
     display: grid;
     grid-template-columns: none;
-    grid-template-rows: 9vh 2fr 1fr;
+    grid-template-rows: 30px 1fr 1fr;
   }
 }
 
@@ -47,6 +47,10 @@
     justify-content: space-between;
     font-family: Roboto;
 
+    @media (max-width: 1200px) {
+      justify-content: space-evenly;
+    }
+
     &-main {
       display: flex;
       flex-flow: row wrap;
@@ -72,7 +76,12 @@
     &-statistics {
       display: flex;
       justify-content: space-around;
-      font-size: smaller;
+      font-size: smaller;    
+
+      @media (max-width: 1200px) {
+        width: 50%;
+        margin: 0 auto;
+      }
      
       &__iconwrapper {
         flex:1;
