@@ -1,35 +1,37 @@
-<button (click)="redirect()" class="video-backbutton"> ◄ </button>
-<div class="video-preview">
-  <img [src]="item.snippet.thumbnails.standard.url" class="video-preview__image" alt="video-preview">
-</div>
-<article class="video-info" [appBorderColorDirective]="item.snippet.publishedAt | dateToColor">
-  <div class="video-info-main">
-    <div class="video-info-main__text">
-      <h3 class="video-info-main__h3"> {{item.snippet.title}} </h3>
-    </div>
-    <div class="video-info-main__text">
-      <h5 class="video-info-main__h5"> {{item.snippet.publishedAt | date: 'fullDate'}} </h5>
-    </div>
-    <div class="video-info-main__text">
-      <p class="video-info-main__p"> {{item.snippet.description}} </p>
-    </div>
+<ng-container *ngIf="item">
+  <button (click)="redirect()" class="video-backbutton"> ◄ </button>
+  <div class="video-preview">
+    <img [src]="item.snippet.thumbnails.standard.url" class="video-preview__image" alt="video-preview">
   </div>
-  <section class="video-info-statistics">
-    <div class="video-info-statistics__iconwrapper">
-      <img src="../../../../assets/images/viewed.jpg" alt="viewCount">
-      {{ item.statistics.viewCount | countTrim }}
+  <article class="video-info" [appBorderColorDirective]="item.snippet.publishedAt | dateToColor">
+    <div class="video-info-main">
+      <div class="video-info-main__text">
+        <h3 class="video-info-main__h3"> {{item.snippet.title}} </h3>
+      </div>
+      <div class="video-info-main__text">
+        <h5 class="video-info-main__h5"> {{item.snippet.publishedAt | date: 'fullDate'}} </h5>
+      </div>
+      <div class="video-info-main__text">
+        <p class="video-info-main__p"> {{item.snippet.description}} </p>
+      </div>
     </div>
-    <div class="video-info-statistics__iconwrapper">
-      <img src="../../../../assets/images/liked.jpg" alt="likesCount">
-      {{ item.statistics.likeCount | countTrim }}
-    </div>
-    <div class="video-info-statistics__iconwrapper">
-      <img src="../../../../assets/images/dislike.jpg" alt="dislikesCount">
-      {{ item.statistics.dislikeCount | countTrim }}
-    </div>
-    <div class="video-info-statistics__iconwrapper">
-      <img src="../../../../assets/images/comment.jpg" alt="commentCount">
-      {{ item.statistics.commentCount | countTrim }}
-    </div>
-  </section>
-</article>
+    <section class="video-info-statistics">
+      <div class="video-info-statistics__iconwrapper">
+        <img src="../../../../assets/images/viewed.jpg" alt="viewCount">
+        {{ item.statistics.viewCount | countTrim }}
+      </div>
+      <div class="video-info-statistics__iconwrapper">
+        <img src="../../../../assets/images/liked.jpg" alt="likesCount">
+        {{ item.statistics.likeCount | countTrim }}
+      </div>
+      <div class="video-info-statistics__iconwrapper">
+        <img src="../../../../assets/images/dislike.jpg" alt="dislikesCount">
+        {{ item.statistics.dislikeCount | countTrim }}
+      </div>
+      <div class="video-info-statistics__iconwrapper">
+        <img src="../../../../assets/images/comment.jpg" alt="commentCount">
+        {{ item.statistics.commentCount | countTrim }}
+      </div>
+    </section>
+  </article>
+</ng-container>

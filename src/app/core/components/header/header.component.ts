@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject, EMPTY } from 'rxjs';
 import { debounceTime, takeUntil, switchMap } from 'rxjs/operators';
 import { LoadDataService } from '../../services/load-data.service';
 import { ISearchResponse } from './../../../youtube/models/search-response.model';
@@ -14,16 +15,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private componentDestroyed: Subject<boolean> = new Subject();
   public isSortingBoxOpen: boolean = false;
 
-  constructor(private loadDataService: LoadDataService) { }
+  constructor(private loadDataService: LoadDataService, private router: Router) { }
 
   public ngOnInit(): void {
     this.loadDataService.searchQuery
       .pipe(
         debounceTime(2000),
         switchMap((query: string) => {
-          return query.length > 3
-            ? this.loadDataService.getData(query)
-            : of({});
+          if (query.length > 3) {
+            this.router.navigate(['/videos'], { queryParams: { search_query: query } });
+            return this.loadDataService.getData(query);
+          } else {
+            return EMPTY;
+          }
         }),
         takeUntil(this.componentDestroyed)
       )

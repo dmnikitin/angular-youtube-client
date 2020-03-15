@@ -20,28 +20,32 @@ export class LoadDataService {
 
   public getData(query: string, results: number = 10): Observable<ISearchResponse> {
 
-    const searchParams: HttpParams = new HttpParams()
+    const params: HttpParams = new HttpParams()
       .set('part', 'snippet')
       .set('maxResults', results.toString())
       .set('q', query)
       .set('type', 'video');
 
-    return this.http.get<ISearchResponse>(`${this.URL}search`, { params: searchParams })
+    return this.http.get<ISearchResponse>(`${this.URL}search`, { params })
       .pipe(
         pluck('items'),
         switchMap((items: []) => from(items)),
         map((item: ISearchItemInitial) => item.id.videoId),
         reduce((totalStr, current) => totalStr + ',' + current),
-        switchMap((idString: string) => {
-          const videoParams: HttpParams = new HttpParams()
-            .set('part', 'snippet,statistics')
-            .set('id', idString);
-          return this.http.get<ISearchResponse>(`${this.URL}videos`, { params: videoParams });
-        }),
+        switchMap((idString: string) => this.getDataById(idString)),
         catchError((error) => {
           console.log('error: ', error);
           return EMPTY;
         })
       );
+  }
+
+  public getDataById(idString: string): Observable<ISearchResponse> {
+
+    const params: HttpParams = new HttpParams()
+      .set('part', 'snippet,statistics')
+      .set('id', idString);
+
+    return this.http.get<ISearchResponse>(`${this.URL}videos`, { params });
   }
 }

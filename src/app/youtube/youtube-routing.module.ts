@@ -6,7 +6,7 @@ import { NotFoundComponent } from './../shared/components/not-found/not-found.co
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full' },
-  { path: ':id', component: DetailsPageComponent },
+  { path: 'watch', component: DetailsPageComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404' }
 ];

@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
     this.initForm();
     this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
       if (isAuthenticated) {
-        this.router.navigate(['videos']);
+        this.router.navigate(['/videos']);
       }
     });
   }

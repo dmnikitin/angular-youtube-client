@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserActionsService } from '../../../core/services/user-actions.service';
@@ -17,7 +18,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
   public searchResponse: ISearchResponse = this.loadDataService.data;
   public userActions: IUserActions;
 
-  constructor(private loadDataService: LoadDataService, private userActionsService: UserActionsService) {
+  constructor(
+    private router: ActivatedRoute,
+    private loadDataService: LoadDataService, private userActionsService: UserActionsService) {
   }
 
   public ngOnInit(): void {
@@ -31,10 +34,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
       .subscribe((userActions: IUserActions) => {
         this.userActions = { ...userActions };
       });
+    this.router.queryParams.subscribe(e => console.log(e));
+
   }
 
   public ngOnDestroy(): void {
-    this.componentDestroyed.next(true);
-    this.componentDestroyed.complete();
+    // this.componentDestroyed.next(true);
+    // this.componentDestroyed.complete();
   }
 }

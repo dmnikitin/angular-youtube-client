@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { ISearchItem } from '../../models/search-item.model';
-import { DetailsDataService } from '../../services/details-data.service';
 
 @Component({
   selector: 'app-search-item',
@@ -12,13 +12,13 @@ export class SearchItemComponent implements OnInit {
   @Input() public item: ISearchItem;
   public color: string;
 
-  constructor(public detailsDataService: DetailsDataService) {
+  constructor(private router: Router) {
   }
 
   public ngOnInit(): void {
   }
-  public openDetailsPage(): void {
-    this.detailsDataService.item = this.item;
+  public openDetailsPage(id: string): void {
+    this.router.navigate(['/watch'], { queryParams: { v: id } });
   }
 
 }
