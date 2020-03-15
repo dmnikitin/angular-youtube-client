@@ -17,10 +17,12 @@ export class LoginBoxComponent implements OnInit {
 
   public logout(): void {
     this.authService.logout();
+    window.location.reload();
     for (let prop in this.loadDataService.data) {
       if (this.loadDataService.data.hasOwnProperty(prop)) {
         delete this.loadDataService.data[prop];
       }
     }
+
   }
 }

@@ -10,7 +10,6 @@ import { LoadDataService } from './../../../core/services/load-data.service';
   styleUrls: ['./details-page.component.scss']
 })
 export class DetailsPageComponent implements OnInit {
-  private params: string;
 
   public item: ISearchItem;
 
@@ -20,25 +19,14 @@ export class DetailsPageComponent implements OnInit {
     private loadDataService: LoadDataService
   ) { }
 
-  // public ngOnInit(): void {
-  //   if (!this.detailsDataService.item) {
-  //     this.router.navigate(['videos']);
-  //   }
-  //   this.item = this.detailsDataService.item;
-  // }
   public redirect(): void {
-    console.log(this.route.params);
-    console.log(this.params);
     this.router.navigate(['videos']);
-
   }
 
   public ngOnInit(): void {
-
     this.route.queryParams
       .pipe(switchMap((params) => this.loadDataService.getDataById(params.v)))
       .subscribe((data) => {
-
         this.item = data.items[0];
       });
   }

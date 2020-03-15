@@ -25,7 +25,6 @@ export class MainPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    console.log('init main');
     this.loadDataService.dataObs
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((searchResponse: ISearchResponse) => {
