@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  button {
+    background: #2F80ED;
+    border-radius: 5px;
+    color: #E5E5E5;
+    font-family: Roboto;
+    text-align: center;
+    height: 30px;
+  }
+}

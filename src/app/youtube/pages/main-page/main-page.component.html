@@ -1,0 +1,6 @@
+<div class="search-result" *ngIf="searchResponse">
+  <app-search-item
+    *ngFor="let item of searchResponse.items | searchFilter: userActions.filteringValue | searchSort: userActions.isSortingByDate : userActions.isAscending"
+    [item]="item">
+  </app-search-item>
+</div>

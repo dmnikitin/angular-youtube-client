@@ -1,0 +1,15 @@
+<div class="sorting-box">
+  <span>Sorting by</span>
+  <div class="sorting-box-button">
+    <button class="sorting-box-button__button" (click)="sortByDate(true)">date</button>
+    <span class="sorting-box-button__span" *ngIf="sortingArrowShow.date">
+      {{ userActionsService.userActions.isAscending ? '↑' : '↓' }} </span>
+  </div>
+  <div class="sorting-box-button">
+    <button class="sorting-box-button__button" (click)="sortByDate(false)">count of views</button>
+    <span class="sorting-box-button__span" *ngIf="sortingArrowShow.views">
+      {{ userActionsService.userActions.isAscending ? '↓' : '↑' }} </span>
+  </div>
+  <span>by word or sentance</span>
+  <input class="sorting-box-input" [(ngModel)]="filteringValue" (ngModelChange)="filterBy(filteringValue)" type="text">
+</div>
