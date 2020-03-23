@@ -9,7 +9,6 @@ import { BorderColorDirective } from './directives/border-color-directive.direct
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
-import { DetailsDataService } from './services/details-data.service';
 import { CountTrimPipe } from './pipes/views-count-trim.pipe';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { CountTrimPipe } from './pipes/views-count-trim.pipe';
     CommonModule,
     YoutubeRoutingModule,
     SharedModule,
-  ],
-  providers: [DetailsDataService],
+  ]
 })
 export class YoutubeModule { }

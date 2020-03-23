@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 import { UserActionsService } from './../../services/user-actions.service';
+import { ISortingArrow } from './../../models/sorting-arrow.model';
 
 @Component({
   selector: 'app-sorting-box',
@@ -7,7 +9,8 @@ import { UserActionsService } from './../../services/user-actions.service';
   styleUrls: ['./sorting-box.component.scss']
 })
 export class SortingBoxComponent implements OnInit {
-  public sortingArrowShow: { date: boolean, views: boolean } = { date: true, views: false };
+
+  public sortingArrowShow: ISortingArrow = { date: true, views: false };
   constructor(private userActionsService: UserActionsService) { }
 
   public ngOnInit(): void {
@@ -20,5 +23,4 @@ export class SortingBoxComponent implements OnInit {
   public filterBy(filteringValue: string): void {
     this.userActionsService.filteringValueUpdated(filteringValue);
   }
-
 }
