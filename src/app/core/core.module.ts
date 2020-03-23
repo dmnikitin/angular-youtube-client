@@ -10,6 +10,7 @@ import { LoadDataService } from './services/load-data.service';
 import { UserActionsService } from './services/user-actions.service';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
