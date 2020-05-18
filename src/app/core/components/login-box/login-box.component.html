@@ -1,3 +1,5 @@
 <span>{{ (authService.userLoginObs | async) || 'logged out' }}</span>
-<img src="../../../assets/images/user.jpg" alt="avatar">
-<button *ngIf="authService.userLoginObs | async" (click)="logout()" type="button">logout</button>
+<span class="material-icons">person</span>
+<button *ngIf="authService.userLoginObs | async" (click)="logout()" type="button">
+  <span class="material-icons">input</span>
+</button>

@@ -4,11 +4,13 @@
   align-items: center;
 
   button {
-    background: #2F80ED;
-    border-radius: 5px;
-    color: #E5E5E5;
-    font-family: Roboto;
-    text-align: center;
+    background: transparent;
+    color: rgb(105, 105, 105);
+    border: none;
     height: 30px;
+    &:hover {
+      cursor: pointer;
+      border: none;
+    }
   }
 }

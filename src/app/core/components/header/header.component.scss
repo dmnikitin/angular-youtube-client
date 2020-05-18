@@ -1,8 +1,11 @@
 :host {
   width: 100%;
+  background-color: #E5E5E5;
+}
+
+.mat-toolbar {
   display: grid;
   grid-template-columns: 80% 20%;
-  background-color: #E5E5E5;
 }
 
 .search-box {
@@ -15,17 +18,13 @@
   }
 
   &__button {
-    background: #2F80ED;
-    border-radius: 5px;
-    color: #E5E5E5;
-    font-family: Roboto;
-    text-align: center;
-    height: 30px;
-  }
-
-  &__input {
-    background: #EFEFEF;
+    background: transparent;
+    color: rgb(105, 105, 105);
     border: none;
-    width: 350px;
+    height: 30px;
+    &:hover {
+      cursor: pointer;
+      border: none;
+    }
   }
 }

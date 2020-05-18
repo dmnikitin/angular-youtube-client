@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subject, EMPTY } from 'rxjs';
 import { debounceTime, takeUntil, switchMap } from 'rxjs/operators';
 import { LoadDataService } from '../../services/load-data.service';
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private componentDestroyed: Subject<boolean> = new Subject();
   public isSortingBoxOpen: boolean = false;
+  public query: string;
 
   constructor(
     private loadDataService: LoadDataService,
@@ -51,5 +52,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public toggleSortingBoxView(): void {
     this.isSortingBoxOpen = !this.isSortingBoxOpen;
+  }
+
+  public onFormSubmit(query: string): void {
+    console.log(query);
+    this.loadDataService.searchQuery.next(query);
   }
 }

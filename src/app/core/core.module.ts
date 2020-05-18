@@ -9,7 +9,10 @@ import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { LoadDataService } from './services/load-data.service';
 import { UserActionsService } from './services/user-actions.service';
 import { ApiInterceptor } from './interceptors/api.interceptor';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -21,6 +24,10 @@ import { ApiInterceptor } from './interceptors/api.interceptor';
     FormsModule,
     HttpClientModule,
     SharedModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     LoadDataService,
