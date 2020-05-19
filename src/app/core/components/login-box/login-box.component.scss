@@ -5,7 +5,6 @@
 
   button {
     background: transparent;
-    color: rgb(105, 105, 105);
     border: none;
     height: 30px;
     &:hover {
@@ -13,4 +12,9 @@
       border: none;
     }
   }
+}
+
+.user-data {
+  display: flex;
+  align-items: center;
 }

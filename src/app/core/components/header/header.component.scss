@@ -5,21 +5,39 @@
 
 .mat-toolbar {
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 20% 50% 30%;
+}
+
+.mat-form-field {
+  @media (min-width: 800px) {
+    min-width: 300px;
+  }
+}
+
+.image-wrapper {
+  display: flex;
+    justify-content: center;
+}
+
+.logo {
+  height: 60px;
+  width: 100px;
+
 }
 
 .search-box {
-  height: 10vh;
+  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
   form {
     margin: 0 20px;
+    height: 65px;
   }
 
   &__button {
     background: transparent;
-    color: rgb(105, 105, 105);
+    // color: rgb(105, 105, 105);
     border: none;
     height: 30px;
     &:hover {

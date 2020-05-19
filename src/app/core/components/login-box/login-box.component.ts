@@ -9,7 +9,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 })
 export class LoginBoxComponent implements OnInit {
 
-  constructor(private authService: AuthService, private loadDataService: LoadDataService) { }
+  constructor(public authService: AuthService, private loadDataService: LoadDataService) { }
 
   public ngOnInit(): void {
     this.authService.checkAuthentication();

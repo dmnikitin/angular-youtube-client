@@ -1,5 +1,7 @@
-<span>{{ (authService.userLoginObs | async) || 'logged out' }}</span>
-<span class="material-icons">person</span>
+<div class="user-data">
+  <span class="material-icons">person</span>
+  <span>{{ (authService.userLoginObs | async) || 'logged out' }}</span>
+</div>
 <button *ngIf="authService.userLoginObs | async" (click)="logout()" type="button">
   <span class="material-icons">input</span>
 </button>
