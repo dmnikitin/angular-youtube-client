@@ -10,6 +10,6 @@
     <span class="sorting-box-button__span" *ngIf="sortingArrowShow.views">
       {{ (userActionsService.userActions | async).isAscending ? '↓' : '↑' }} </span>
   </div>
-  <span>by word or sentance</span>
+  <span>by word</span>
   <input class="sorting-box-input" [(ngModel)]="filteringValue" (ngModelChange)="filterBy(filteringValue)" type="text">
 </div>

@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { UserActionsService } from './../../services/user-actions.service';
 import { ISortingArrow } from './../../models/sorting-arrow.model';
 
@@ -11,7 +10,9 @@ import { ISortingArrow } from './../../models/sorting-arrow.model';
 export class SortingBoxComponent implements OnInit {
 
   public sortingArrowShow: ISortingArrow = { date: true, views: false };
-  constructor(private userActionsService: UserActionsService) { }
+  public filteringValue: string;
+
+  constructor(public userActionsService: UserActionsService) { }
 
   public ngOnInit(): void {
   }

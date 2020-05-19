@@ -1,24 +1,31 @@
+:host {
+  position: relative;
+  z-index: 1;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin: -4px;
+  background-color: white;
+  font-size: 14px;
+}
+
 .sorting-box {
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #E5E5E5;
   height: 5vh;
 
- 
 
   &-button {
     max-width: 110px;
     margin: 0 20px;
+
     &__button {
-      
       height: 20px;
       background-color: transparent;
       border: none;
       color: blue;
       text-decoration: underline;
-  
       &:hover {
         cursor: pointer;
       }
@@ -27,15 +34,14 @@
     &__span {
       font-weight: bold;
     }
-   
+
   }
 
   &-input {
-    width: 350px;
     height: 20px;
-    background: #EFEFEF;
     border: none;
+    border-bottom: 1px solid;
   }
- 
+
 }
 
