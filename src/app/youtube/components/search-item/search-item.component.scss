@@ -1,11 +1,11 @@
 .item {
-  border: 1px solid transparent;
-  border-radius: 5px;
+  // border: 1px solid transparent;
+  // border-radius: 5px;
   background-color: #E5E5E5;
   display: grid;
   grid-template-rows: 45% 10% 30% 15%;
   align-items: center;
-  box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
+  // box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
   min-height: 350px;
   width: 200px;
   padding: 0 10%;
@@ -33,11 +33,13 @@
   &-button {
     height: 80%;
     width: 100%;
-    background: #2F80ED;
-    border-radius: 5px;
+    background: transparent;
+    border: none;
+    // border-radius: 5px;
     color: #E5E5E5;
     font-family: Roboto;
     text-align: center;
+    font-size: 30px;
     &:hover {
       cursor: pointer;
     }
@@ -52,6 +54,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+    &__text {
+      font-size: 12px;
     }
   }
 

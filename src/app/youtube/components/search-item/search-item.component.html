@@ -4,21 +4,24 @@
   </div>
   <section class="item-statistics">
     <div class="item-statistics__iconwrapper">
-      <img src="../../../../assets/images/viewed.jpg" alt="viewCount">
-      {{ item.statistics.viewCount | countTrim }}
+      <span class="material-icons">favorite</span>
+      <span class="item-statistics__text"> {{ item.statistics.viewCount | countTrim }} </span>
     </div>
     <div class="item-statistics__iconwrapper">
-      <img src="../../../../assets/images/liked.jpg" alt="likesCount">
-      {{ item.statistics.likeCount | countTrim }}
+      <span class="material-icons">thumb_up</span>
+      <span class="item-statistics__text"> {{ item.statistics.likeCount | countTrim }} </span>
     </div>
     <div class="item-statistics__iconwrapper">
-      <img src="../../../../assets/images/dislike.jpg" alt="dislikesCount">
-      {{ item.statistics.dislikeCount | countTrim }}
+      <span class="material-icons">thumb_down</span>
+      <span class="item-statistics__text"> {{ item.statistics.dislikeCount | countTrim }} </span>
     </div>
     <div class="item-statistics__iconwrapper">
-      <img src="../../../../assets/images/comment.jpg" alt="commentCount">
-      {{ item.statistics.commentCount | countTrim }} </div>
+      <span class="material-icons">comment</span>
+      <span class="item-statistics__text"> {{ item.statistics.commentCount | countTrim }} </span>
+    </div>
   </section>
-  <h3 class="item-title"> {{ item.snippet.title }} </h3>
-  <button class="item-button" type="button" (click)="openDetailsPage(item.id)">More...</button>
+  <h3 class="item-title"> {{ item.snippet.title | textTrim : 50 }} </h3>
+  <button class="item-button" type="button" (click)="openDetailsPage(item.id)">
+    <span class="material-icons" title="expand more ...">expand_more</span>
+  </button>
 </article>
