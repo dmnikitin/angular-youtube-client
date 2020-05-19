@@ -1,9 +1,8 @@
 <ng-container *ngIf="item">
-  <button (click)="redirect()" class="video-backbutton"> ◄ </button>
   <div class="video-preview">
-    <img [src]="item.snippet.thumbnails.standard.url" class="video-preview__image" alt="video-preview">
+    <iframe [src]="getIframeURL() | safe" frameborder="0"></iframe>
   </div>
-  <article class="video-info" [appBorderColorDirective]="item.snippet.publishedAt | dateToColor">
+  <article class="video-info">
     <div class="video-info-main">
       <div class="video-info-main__text">
         <h3 class="video-info-main__h3"> {{item.snippet.title}} </h3>
@@ -12,26 +11,29 @@
         <h5 class="video-info-main__h5"> {{item.snippet.publishedAt | date: 'fullDate'}} </h5>
       </div>
       <div class="video-info-main__text">
-        <p class="video-info-main__p"> {{item.snippet.description}} </p>
+        <p class="video-info-main__p"> {{item.snippet.description | textTrim: 500 }} </p>
       </div>
     </div>
     <section class="video-info-statistics">
       <div class="video-info-statistics__iconwrapper">
-        <img src="../../../../assets/images/viewed.jpg" alt="viewCount">
-        {{ item.statistics.viewCount | countTrim }}
+        <span class="material-icons">favorite</span>
+        <span class="video-info-statistics__text"> {{ item.statistics.viewCount | countTrim }} </span>
       </div>
       <div class="video-info-statistics__iconwrapper">
-        <img src="../../../../assets/images/liked.jpg" alt="likesCount">
-        {{ item.statistics.likeCount | countTrim }}
+        <span class="material-icons">thumb_up</span>
+        <span class="video-info-statistics__text"> {{ item.statistics.likeCount | countTrim }} </span>
       </div>
       <div class="video-info-statistics__iconwrapper">
-        <img src="../../../../assets/images/dislike.jpg" alt="dislikesCount">
-        {{ item.statistics.dislikeCount | countTrim }}
+        <span class="material-icons">thumb_down</span>
+        <span class="video-info-statistics__text"> {{ item.statistics.dislikeCount | countTrim }} </span>
       </div>
       <div class="video-info-statistics__iconwrapper">
-        <img src="../../../../assets/images/comment.jpg" alt="commentCount">
-        {{ item.statistics.commentCount | countTrim }}
+        <span class="material-icons">comment</span>
+        <span class="video-info-statistics__text"> {{ item.statistics.commentCount | countTrim }} </span>
       </div>
     </section>
   </article>
+  <button (click)="redirect()" class="video-backbutton">
+    <span class="material-icons">arrow_back</span>
+  </button>
 </ng-container>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { ISearchItem } from './../../models/search-item.model';
 import { LoadDataService } from './../../../core/services/load-data.service';
 
@@ -12,6 +12,7 @@ import { LoadDataService } from './../../../core/services/load-data.service';
 export class DetailsPageComponent implements OnInit {
 
   public item: ISearchItem;
+  public videoLink: string;
 
   constructor(
     private router: Router,
@@ -23,11 +24,16 @@ export class DetailsPageComponent implements OnInit {
     this.router.navigate(['videos']);
   }
 
+  public getIframeURL(): string {
+    return this.videoLink;
+  }
+
   public ngOnInit(): void {
     this.route.queryParams
       .pipe(switchMap((params) => this.loadDataService.getDataById(params.v)))
       .subscribe((data) => {
         this.item = data.items[0];
+        this.videoLink = `https://www.youtube.com/embed/${this.item.id}`;
       });
   }
 }
