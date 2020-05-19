@@ -10,6 +10,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CountTrimPipe } from './pipes/views-count-trim.pipe';
+import { TextTrimPipe } from './pipes/text-trim.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CountTrimPipe } from './pipes/views-count-trim.pipe';
     SearchFilterPipe,
     SearchSortPipe,
     CountTrimPipe,
+    TextTrimPipe,
   ],
   imports: [
     CommonModule,
