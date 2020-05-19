@@ -11,6 +11,8 @@ import { DetailsPageComponent } from './pages/details-page/details-page.componen
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CountTrimPipe } from './pipes/views-count-trim.pipe';
 import { TextTrimPipe } from './pipes/text-trim.pipe';
+import { SafePipe } from './pipes/safe.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { TextTrimPipe } from './pipes/text-trim.pipe';
     SearchSortPipe,
     CountTrimPipe,
     TextTrimPipe,
+    SafePipe,
   ],
   imports: [
     CommonModule,
     YoutubeRoutingModule,
     SharedModule,
+    MatDialogModule
   ]
 })
 export class YoutubeModule { }
