@@ -29,6 +29,7 @@ export class AuthService {
   }
 
   public logout(): void {
+    console.log('out');
     this.isAuthenticated = false;
     this.authToken = '';
     this.userLoginObs.next('');
@@ -46,5 +47,11 @@ export class AuthService {
       this.userLoginObs.next(userName);
     }
     return Promise.resolve(this.isAuthenticated);
+  }
+
+  public provideAuth(userName: string): Promise<boolean> {
+    this.isAuthenticated = true;
+    this.userLoginObs.next(userName);
+    return Promise.resolve(true);
   }
 }

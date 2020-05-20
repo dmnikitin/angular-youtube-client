@@ -1,12 +1,36 @@
 :host {
   margin: 10% auto;
   width: 30%;
-  display: flex;  
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
   border: 1px solid transparent;
   border-radius: 5px;
-  background-color: #F2F2F2;  
-  
+  background-color: #F2F2F2;
+
+  div {
+    border: 1px dotted rgb(175, 175, 175);
+    width: 80%;
+    margin: 0 auto;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+
+    h4 {
+      margin: 0;
+      font-weight: 100;
+
+    }
+
+    img {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
   h3 {
     margin-left: 30px;
     font-family: Roboto;
@@ -24,13 +48,13 @@
   }
 
   input {
-    background-color: #E0E0E0; 
     height: 40px;
-    border: 1px solid transparent;  
+    border: 1px dotted rgb(175, 175, 175);
+    border-radius: 5px;
   }
 
   label {
-    color: #828282; 
+    color: #828282;
   }
 
   button {
@@ -40,14 +64,13 @@
     color: #eeeeee;
     height: 30px;
     width: 100px;
-    border-radius: 5px;    
+    border-radius: 5px;
     box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
 
     &:disabled {
       background-color: #8B0000;
     }
   }
-
 }
 
 .alert {

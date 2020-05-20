@@ -27,7 +27,7 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInputModule
   ],
   providers: [
     LoadDataService,

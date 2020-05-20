@@ -1,5 +1,8 @@
 <h3>Login</h3>
-<!-- <app-google-auth></app-google-auth> -->
+<div class="google" (click)="signInWithGoogle()">
+  <img src="../../../../assets/images/google.png" alt="google">
+  <h4>Continue with Google</h4>
+</div>
 <form action="" [formGroup]="authForm" (ngSubmit)="onLoginAttempt()">
   <label for="login">login</label>
   <input id="login" type="text" formControlName="name">
@@ -13,3 +16,6 @@
   </div>
   <button type="submit" [disabled]="!authForm.valid">login</button>
 </form>
+<h3>
+  <a routerLink="/signup">Don't have an account ?</a>
+</h3>
