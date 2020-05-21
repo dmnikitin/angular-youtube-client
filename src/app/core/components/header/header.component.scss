@@ -8,6 +8,10 @@
   grid-template-columns: 20% 50% 30%;
 }
 
+.mat-toolbar-single-row {
+  height: 70px;
+}
+
 .mat-form-field {
   @media (min-width: 800px) {
     min-width: 300px;
@@ -26,18 +30,16 @@
 }
 
 .search-box {
-  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
   form {
     margin: 0 20px;
-    height: 65px;
+    height: 60px;
   }
 
   &__button {
     background: transparent;
-    // color: rgb(105, 105, 105);
     border: none;
     height: 30px;
     &:hover {

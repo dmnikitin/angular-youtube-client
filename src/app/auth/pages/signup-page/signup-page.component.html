@@ -2,7 +2,7 @@
   <img src="../../../../assets/images/google.png" alt="google">
   <h4>Continue with Google</h4>
 </div>
-<form action="" [formGroup]="authForm" (ngSubmit)="onLoginAttempt()">
+<!-- <form action="" [formGroup]="authForm" (ngSubmit)="onLoginAttempt()">
   <label for="login">login</label>
   <input id="login" type="text" formControlName="name">
   <div class="alert" *ngIf="authForm.controls['name'].invalid && authForm.controls['name'].touched">
@@ -14,7 +14,7 @@
     provide not less than 4 symbols
   </div>
   <button type="submit" [disabled]="!authForm.valid">login</button>
-</form>
+</form> -->
 <h3>
-  <a routerLink="/auth/signup">don't have an account?</a>
+  <a routerLink="/auth/login">already have an account?</a>
 </h3>

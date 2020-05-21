@@ -6,11 +6,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: 'app-signup-page',
+  templateUrl: './signup-page.component.html',
+  styleUrls: ['./signup-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class SignupPageComponent implements OnInit {
 
   public authForm: FormGroup;
 
@@ -19,25 +19,26 @@ export class LoginPageComponent implements OnInit {
     public auth: AuthService,
     private router: Router,
     private fb: FormBuilder
-  ) { }
+    ) { }
 
   public ngOnInit(): void {
     this.initForm();
-    this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
-      if (isAuthenticated) {
-        this.router.navigate(['/videos']);
-      }
-    });
-    this.social.authState.subscribe((user) => {
+  //   this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
+  //     if (isAuthenticated) {
+  //       this.router.navigate(['/videos']);
+  //     }
+  //   });
+  //   this.social.authState.subscribe((user) => {
 
-      // this.loggedIn = (user != null);
-      if (user) {
-        this.auth.provideAuth(user.firstName);
-        this.router.navigate(['/videos']);
-      } else {
-        this.router.navigate(['']);
-      }
-    });
+  //     // this.loggedIn = (user != null);
+  //     console.log('subscr');
+  //     if (user) {
+  //       this.auth.provideAuth(user.firstName);
+  //       this.router.navigate(['/videos']);
+  //     } else {
+  //       this.router.navigate(['']);
+  //     }
+  //   });
   }
 
   public initForm(): void {
@@ -45,11 +46,6 @@ export class LoginPageComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
-  }
-
-  public onLoginAttempt(): void {
-    const { name, password } = this.authForm.value;
-    this.auth.login(name, password);
   }
 
   public signInWithGoogle(): void {
