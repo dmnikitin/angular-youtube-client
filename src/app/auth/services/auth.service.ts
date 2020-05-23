@@ -46,6 +46,7 @@ export class AuthService {
       this.isAuthenticated = true;
       this.userLoginObs.next(userName);
     }
+    console.log(this.isAuthenticated);
     return Promise.resolve(this.isAuthenticated);
   }
 

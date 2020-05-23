@@ -1,5 +1,5 @@
 <app-google-auth></app-google-auth>
-<app-form-auth></app-form-auth>
+<app-form-auth [authType]="authType"></app-form-auth>
 <h3 [ngSwitch] = "authType">
   <ng-template ngSwitchCase=0>
     <a routerLink="/signup"> don't have an account?</a>

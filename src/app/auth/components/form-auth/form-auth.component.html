@@ -1,4 +1,4 @@
-<form class="form" action="" [formGroup]="authForm" (ngSubmit)="onLoginAttempt()">
+<form class="form" action="" [formGroup]="authForm" (ngSubmit)="onSubmit()">
   <label class="form-label" for="login">login</label>
   <input class="form-input" id="login" type="text" formControlName="name">
   <div class="form-alert" *ngIf="authForm.controls['name'].invalid && authForm.controls['name'].touched">

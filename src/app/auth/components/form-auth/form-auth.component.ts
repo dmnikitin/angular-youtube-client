@@ -1,6 +1,6 @@
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
@@ -12,6 +12,7 @@ import { Validators } from '@angular/forms';
 export class FormAuthComponent implements OnInit {
 
   public authForm: FormGroup;
+  @Input() public authType: number;
 
   constructor(public auth: AuthService, private router: Router, private fb: FormBuilder) { }
 
@@ -31,12 +32,13 @@ export class FormAuthComponent implements OnInit {
     });
   }
 
-  public onLoginAttempt(): void {
+  public onSubmit(): void {
     const { name, password } = this.authForm.value;
-    this.auth.login(name, password);
+    if (!this.authType) {
+      this.auth.login(name, password);
+    } else {
+
+    }
   }
 
-  public onSignupAttempt(): void {
-    console.log('signup');
-  }
 }
