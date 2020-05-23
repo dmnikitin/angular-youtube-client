@@ -1,20 +1,11 @@
-<div class="google" (click)="signInWithGoogle()">
-  <img src="../../../../assets/images/google.png" alt="google">
-  <h4>Continue with Google</h4>
-</div>
-<form action="" [formGroup]="authForm" (ngSubmit)="onLoginAttempt()">
-  <label for="login">login</label>
-  <input id="login" type="text" formControlName="name">
-  <div class="alert" *ngIf="authForm.controls['name'].invalid && authForm.controls['name'].touched">
-    provide not less than 4 symbols
-  </div>
-  <label for="password">password</label>
-  <input id="password" type="password" formControlName="password">
-  <div class="alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">
-    provide not less than 4 symbols
-  </div>
-  <button type="submit" [disabled]="!authForm.valid">login</button>
-</form>
-<h3>
-  <a routerLink="/auth/signup">don't have an account?</a>
+<app-google-auth></app-google-auth>
+<app-form-auth></app-form-auth>
+<h3 [ngSwitch] = "authType">
+  <ng-template ngSwitchCase=0>
+    <a routerLink="/signup"> don't have an account?</a>
+  </ng-template>
+  <ng-template ngSwitchCase=1>
+    <a routerLink="/login"> already have an account?</a>
+  </ng-template>
 </h3>
+
