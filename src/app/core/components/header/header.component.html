@@ -3,8 +3,8 @@
     <img src="../../../assets/images/logo.png" alt="youtube_logo" class="logo">
   </div>
   <section class="search-box">
-    <form action="" (submit)="onFormSubmit($event)">
-      <mat-form-field appearance="outline" [style.fontSize.px]=14>
+    <form action="">
+      <mat-form-field appearance="outline">
         <mat-label>search a video</mat-label>
         <input matInput type="text" name="input" value="Type here" class="search-box__input" [(ngModel)]="query"
           (ngModelChange)="updateQuery(query)">

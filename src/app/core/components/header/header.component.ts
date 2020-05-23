@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Subject, EMPTY } from 'rxjs';
-import { debounceTime, takeUntil, switchMap } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject, EMPTY, from, of } from 'rxjs';
+import { debounceTime, takeUntil, switchMap, catchError } from 'rxjs/operators';
+import { AuthService } from './../../../auth/services/auth.service';
 import { LoadDataService } from '../../services/load-data.service';
 import { ISearchResponse } from './../../../youtube/models/search-response.model';
 
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public query: string;
 
   constructor(
+    private authService: AuthService,
     private loadDataService: LoadDataService,
     private router: Router
   ) { }
@@ -27,18 +29,36 @@ export class HeaderComponent implements OnInit, OnDestroy {
         debounceTime(2000),
         switchMap((query: string) => {
           if (query.length > 3) {
-            this.router.navigate(['/videos'], { queryParams: { search_query: query } });
-            return this.loadDataService.getData(query);
+            return from(this.authService.checkAuthentication()).pipe(
+              switchMap( (response: boolean) => {
+                if (response) {
+                  this.router.navigate(['/videos'], { queryParams: { search_query: query } });
+                  return from(this.loadDataService.getData(query));
+                } else {
+                  alert ('please login to search videos');
+                  return EMPTY;
+                }
+              }),
+              catchError((error) => {
+                console.log('error: ', error);
+                return of(error);
+              })
+          )
           } else {
             return EMPTY;
           }
         }),
-        takeUntil(this.componentDestroyed)
+        takeUntil(this.componentDestroyed),
+        catchError((error) => {
+          console.log('error: ', error);
+          return of(error);
+        })
       )
       .subscribe((data: ISearchResponse) => {
         this.loadDataService.data = data;
         this.loadDataService.dataObs.next(data);
       });
+
   }
 
   public ngOnDestroy(): void {
@@ -52,10 +72,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public toggleSortingBoxView(): void {
     this.isSortingBoxOpen = !this.isSortingBoxOpen;
-  }
-
-  public onFormSubmit(query: string): void {
-    console.log(query);
-    this.loadDataService.searchQuery.next(query);
   }
 }
