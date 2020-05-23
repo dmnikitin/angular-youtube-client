@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class GoogleAuthComponent implements OnInit {
 
+  private loggedIn: boolean = false;
+
   constructor(private auth: AuthService, private social: ASLService, private router: Router) { }
 
   public signInWithGoogle(): void {
@@ -17,18 +19,13 @@ export class GoogleAuthComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-
-    // this.social.authState.subscribe((user) => {
-    //   // this.loggedIn = (user != null);
-    //   if (user) {
-    //     console.log('!!!!!!!!');
-    //     this.auth.provideAuth(user.firstName);
-    //     this.router.navigate(['/videos']);
-    //   } else {
-    //     console.log('!!!!!!!!');
-    //     this.router.navigate(['']);
-    //   }
-    // });
+    this.social.authState.subscribe((user) => {
+      this.loggedIn = (user != null);
+      if (this.loggedIn) {
+        this.auth.provideAuth(user.firstName);
+        this.router.navigate(['/videos']);
+      }
+    });
   }
 
 }
