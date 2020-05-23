@@ -1,0 +1,21 @@
+.google {
+  border: 1px dotted rgb(175, 175, 175);
+  width: 80%;
+  margin: 0 auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+  &-heading {
+    margin: 0;
+    font-weight: 100;
+  }
+
+  &-logo {
+    margin-right: 20px;
+    height: 30px;
+    width: 30px;
+  }
+}
