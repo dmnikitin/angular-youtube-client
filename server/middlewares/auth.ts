@@ -10,7 +10,8 @@ const { JWT_SECRET_KEY } = config;
 
 export default function authMiddleware (req: IRequest, res: Response, next: NextFunction): void {
   if (req.url === '/login' || req.url === '/signup') {
-    return next();  }
+    return next();
+  }
   if (req.headers.authorization) {
     const [prefix, token] = req.headers.authorization.split(' ');
     if (prefix === 'Bearer') {

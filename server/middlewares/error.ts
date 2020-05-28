@@ -2,7 +2,7 @@ import { Response, NextFunction } from 'express';
 import { INTERNAL_SERVER_ERROR, getStatusText } from 'http-status-codes';
 import logger from '../common/winston-config';
 
-export default function errorMiddleware (err, res: Response, next: NextFunction): void {
+export default function errorMiddleware (err, req, res, next): void {
   const { code, message } = err;
   if (code) {
     logger.log('error', `error: ${code}: ${message}`);
