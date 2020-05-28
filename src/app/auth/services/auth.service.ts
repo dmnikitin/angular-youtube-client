@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, EMPTY, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import IUser from '../../shared/models/user.model';
+import { tap, map, catchError } from 'rxjs/operators';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -9,23 +13,62 @@ export class AuthService {
   private authToken: string;
   public userLoginObs: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
-  private generateAuthToken(name: string): string {
-    return `${name[name.length - 1]}${Math.floor(Math.random() * 100000)}${name[0]}`;
-  }
+  // private generateAuthToken(name: string): string {
+  //   return `${name[name.length - 1]}${Math.floor(Math.random() * 100000)}${name[0]}`;
+  // }
 
-  public login(login: string, password: string): void {
+  public login(login: string, password: string): Observable<{token: string}> {
+
+    const body: IUser = { login, password };
+    return this.http.post<{token: string}>('http://localhost:4000/login', body)
+      .pipe(
+        tap(data => {
+          console.log('tap', data)
+          // localStorage.setItem('authToken', data);
+
+
+        }),
+        map(data => {
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('userName', login);
+          this.isAuthenticated = true;
+          this.userLoginObs.next(login);
+          return data.token;
+        }),
+        catchError((error) => {
+          if (error.status === 403) {
+            return of(null);
+          }
+          return EMPTY;
+        })
+      );
 
     if (!localStorage.getItem('authToken')) {
-      const authToken: string = this.generateAuthToken(login);
-      this.authToken = authToken;
-      localStorage.setItem('authToken', this.authToken);
-      localStorage.setItem('userName', login);
+      // const authToken: string = this.generateAuthToken(login);
+      // this.authToken = authToken;
+      // localStorage.setItem('authToken', this.authToken);
+      // localStorage.setItem('userName', login);
     }
     this.isAuthenticated = true;
     this.userLoginObs.next(login);
-    this.router.navigate(['/videos']);
+    // this.router.navigate(['/videos']);
+
+  }
+
+  public signup(login: string, password: string): Observable<IUser | null> {
+    const body: IUser = { login, password };
+    return this.http.post<IUser>('http://localhost:4000/signup', body)
+      .pipe(
+        map(data => data),
+        catchError((error) => {
+          if (error.status === 403) {
+            return of(null);
+          }
+          return EMPTY;
+        })
+      );
   }
 
   public logout(): void {
@@ -46,7 +89,7 @@ export class AuthService {
       this.isAuthenticated = true;
       this.userLoginObs.next(userName);
     }
-    console.log(this.isAuthenticated);
+    console.log('checkAuthentication', this.isAuthenticated);
     return Promise.resolve(this.isAuthenticated);
   }
 
