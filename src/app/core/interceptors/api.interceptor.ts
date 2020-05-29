@@ -15,9 +15,12 @@ import { environment } from 'src/environments/environment';
 export class ApiInterceptor implements HttpInterceptor {
   public intercept(req: HttpRequest<ISearchResponse>, next: HttpHandler)
     : Observable<HttpEvent<ISearchResponse>> {
-    return next.handle(req.clone({
-      url: req.url,
-      params: req.params.set('key', environment.apiKey)
-    }));
+      if (!/signup|login/g.test(req.url)) {
+        return next.handle(req.clone({
+          url: req.url,
+          params: req.params.set('key', environment.apiKey)
+        }));
+      }
+      return next.handle(req.clone({url: req.url}));
   }
 }
