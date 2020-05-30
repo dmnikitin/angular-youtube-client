@@ -9,5 +9,6 @@
   <div class="form-alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">
     provide not less than 4 symbols
   </div>
-  <button class="form-button" type="submit" [disabled]="!authForm.valid">login</button>
+  <button class="form-button" type="submit" [disabled]="!authForm.valid"> {{ authType ? 'signup' : 'login'}} </button>
+  <div *ngIf="showError" class="form-alert"> <br> {{ authType ? 'sorry, such user already exists' : 'please enter valid credentials'}} </div>
 </form>

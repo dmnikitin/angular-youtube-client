@@ -12,6 +12,7 @@ import { Validators } from '@angular/forms';
 export class FormAuthComponent implements OnInit {
 
   public authForm: FormGroup;
+  public showError: boolean = false;
   @Input() public authType: number;
 
   constructor(public auth: AuthService, private router: Router, private fb: FormBuilder) { }
@@ -35,9 +36,21 @@ export class FormAuthComponent implements OnInit {
   public onSubmit(): void {
     const { name, password } = this.authForm.value;
     if (!this.authType) {
-      this.auth.login(name, password);
+      this.auth.login(name, password).subscribe((data) => {
+        if (data) {
+          this.router.navigate(['/videos']);
+        } else {
+          this.showError = true;
+        }
+      });
     } else {
-
+      this.auth.signup(name, password).subscribe((data) => {
+        if (!data) {
+          this.showError = true;
+        } else {
+          this.router.navigate(['/login']);
+        }
+      });
     }
   }
 
