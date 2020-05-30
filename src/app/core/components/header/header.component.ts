@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 console.log('error: ', error);
                 return of(error);
               })
-          )
+          );
           } else {
             return EMPTY;
           }
