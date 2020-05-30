@@ -1,20 +1,15 @@
-:host {
-  position: relative;
-  z-index: 1;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  margin: -4px;
-  background-color: white;
-  font-size: 14px;
-}
-
 .sorting-box {
-
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   height: 5vh;
-
+  position: relative;
+  z-index: 1;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: white;
+  font-size: 14px;
+  width: 100%;
 
   &-button {
     max-width: 110px;
