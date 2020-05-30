@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, EMPTY, from, of } from 'rxjs';
-import { debounceTime, takeUntil, switchMap, catchError } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { EMPTY, from, of } from 'rxjs';
+import { debounceTime, switchMap, catchError } from 'rxjs/operators';
 import { AuthService } from './../../../auth/services/auth.service';
 import { LoadDataService } from '../../services/load-data.service';
 import { ISearchResponse } from './../../../youtube/models/search-response.model';
@@ -11,9 +11,8 @@ import { ISearchResponse } from './../../../youtube/models/search-response.model
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
 
-  private componentDestroyed: Subject<boolean> = new Subject();
   public isSortingBoxOpen: boolean = false;
   public query: string;
 
@@ -48,7 +47,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
             return EMPTY;
           }
         }),
-        takeUntil(this.componentDestroyed),
         catchError((error) => {
           console.log('error: ', error);
           return of(error);
@@ -59,11 +57,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.loadDataService.dataObs.next(data);
       });
 
-  }
-
-  public ngOnDestroy(): void {
-    this.componentDestroyed.next(true);
-    this.componentDestroyed.complete();
   }
 
   public updateQuery(query: string): void {
