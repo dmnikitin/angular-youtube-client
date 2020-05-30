@@ -11,11 +11,12 @@ const userSchema: mongoose.Schema = new mongoose.Schema(
   { versionKey: false }
 );
 
-userSchema.statics.toResponse = (user) => {
+userSchema.statics.toResponse = user => {
   const { id, login } = user;
   return { id, login };
 };
 
 userSchema.pre('save', hash);
 
-export const userModel: any = mongoose.model('User', userSchema);
+const userModel: any =  mongoose.model('User', userSchema);
+export default userModel;
