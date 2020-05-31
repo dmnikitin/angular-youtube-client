@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import hash from '../helpers/hash';
 import { v4 as uuidv4 } from 'uuid';
+import { IUser } from './interfaces';
 
 const userSchema: mongoose.Schema = new mongoose.Schema(
   {
@@ -18,5 +19,5 @@ userSchema.statics.toResponse = user => {
 
 userSchema.pre('save', hash);
 
-const userModel: any =  mongoose.model('User', userSchema);
+const userModel: mongoose.Model<IUser, {}> =  mongoose.model<IUser>('User', userSchema);
 export default userModel;
