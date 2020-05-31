@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
@@ -22,11 +21,6 @@ export class FormAuthComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.initForm();
-    this.auth.checkAuthentication().then((isAuthenticated: boolean) => {
-      if (isAuthenticated) {
-        this.router.navigate(['/videos']);
-      }
-    });
   }
 
   public initForm(): void {
