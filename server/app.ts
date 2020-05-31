@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import authRouter from './resources/auth/auth.router';
+import authRouter from './routes/router.routes';
 import authMiddleware from './middlewares/auth';
 import loggerMiddleware from './middlewares/logger';
 import errorMidlleware from './middlewares/error';

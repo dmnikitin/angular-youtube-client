@@ -1,10 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import config from '../common/config';
-
-interface IRequest extends Request {
-  decoded: string;
-}
+import { IRequest } from './../models/interfaces';
 
 const { JWT_SECRET_KEY } = config;
 
@@ -23,7 +20,7 @@ export default function authMiddleware (req: IRequest, res: Response, next: Next
           });
           return;
         }
-        req.decoded = decoded;
+        req.body.decoded = decoded;
         return next();
       });
     }
