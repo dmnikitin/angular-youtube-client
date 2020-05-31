@@ -22,8 +22,7 @@ export class GoogleAuthComponent implements OnInit {
     this.social.authState.subscribe((user) => {
       this.loggedIn = (user != null);
       if (this.loggedIn) {
-        this.auth.provideAuth(user.firstName);
-        this.router.navigate(['/videos']);
+        this.auth.authenticateWithGoogle(user.firstName);
       }
     });
   }

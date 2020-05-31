@@ -11,6 +11,7 @@ export class AuthService {
 
   public $isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public $login: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public $isLoggedWithGoogle: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -57,9 +58,10 @@ export class AuthService {
       });
   }
 
-  public provideAuth(userName: string): Promise<boolean> {
+  public authenticateWithGoogle(userName: string): void {
+    this.$isLoggedWithGoogle.next(true);
     this.$isAuthenticated.next(true);
     this.$login.next(userName);
-    return Promise.resolve(true);
+    this.router.navigate(['/videos']);
   }
 }

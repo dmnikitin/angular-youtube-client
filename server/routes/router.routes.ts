@@ -3,13 +3,13 @@ import { createToken, checkRegistration, checkPassword, createNewUser } from './
 import catchErrorsDecorator from '../helpers/error-decorator';
 import ExtendedError from '../helpers/error-extended';
 import userModel from '../models/user.model';
-import { IUser } from '../models/interfaces';
+import { IUserDocument } from '../models/interfaces';
 const router: Router = Router();
 
 router.route('/login').post(
   catchErrorsDecorator(async (req, res) => {
     const { login, password } = req.body;
-    const isRegistered: IUser = await checkRegistration(login);
+    const isRegistered: IUserDocument = await checkRegistration(login);
     if (!isRegistered) {
       throw new ExtendedError(403, 'Access forbidden');
     }
@@ -25,11 +25,11 @@ router.route('/login').post(
 router.route('/signup').post(
   catchErrorsDecorator(async (req, res) => {
     const { login } = req.body;
-    const isRegistered: IUser = await checkRegistration(login);
+    const isRegistered: IUserDocument = await checkRegistration(login);
     if (isRegistered) {
       throw new ExtendedError(403, 'User already exists');
     }
-    const user: IUser = await createNewUser(req.body);
+    const user: IUserDocument = await createNewUser(req.body);
     if (!user) {
       throw new ExtendedError(400, 'Bad request');
     }

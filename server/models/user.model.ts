@@ -1,9 +1,9 @@
-import * as mongoose from 'mongoose';
+import { model, Schema } from 'mongoose';
 import hash from '../helpers/hash';
 import { v4 as uuidv4 } from 'uuid';
-import { IUser } from './interfaces';
+import { IUserDocument, IUserModelInterface } from './interfaces';
 
-const userSchema: mongoose.Schema = new mongoose.Schema(
+const userSchema: Schema = new Schema(
   {
     _id: { type: String, default: uuidv4() },
     login: { type: String },
@@ -12,12 +12,14 @@ const userSchema: mongoose.Schema = new mongoose.Schema(
   { versionKey: false }
 );
 
-userSchema.statics.toResponse = user => {
+function toResponse(user: IUserDocument): { login: string, id: string } {
   const { id, login } = user;
   return { id, login };
-};
+}
+
+userSchema.statics.toResponse = toResponse;
 
 userSchema.pre('save', hash);
 
-const userModel: mongoose.Model<IUser, {}> =  mongoose.model<IUser>('User', userSchema);
+const userModel: IUserModelInterface =  model<IUserDocument, IUserModelInterface>('User', userSchema);
 export default userModel;

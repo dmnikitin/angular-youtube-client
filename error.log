@@ -1,0 +1,121 @@
+{
+  statusCode: 500,
+  message: 'Cast to string failed for value "{\n' +
+    '  v1: [Function: v1],\n' +
+    '  v3: [Function: generateUUID] {\n' +
+    "    DNS: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',\n" +
+    "    URL: '6ba7b811-9dad-11d1-80b4-00c04fd430c8'\n" +
+    '  },\n' +
+    '  v4: [Function: v4],\n' +
+    '  v5: [Function: generateUUID] {\n' +
+    "    DNS: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',\n" +
+    "    URL: '6ba7b811-9dad-11d1-80b4-00c04fd430c8'\n" +
+    '  }\n' +
+    '}" at path "_id"',
+  level: 'error'
+}
+{
+  statusCode: 500,
+  message: 'Cast to string failed for value "{\n' +
+    '  v1: [Function: v1],\n' +
+    '  v3: [Function: generateUUID] {\n' +
+    "    DNS: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',\n" +
+    "    URL: '6ba7b811-9dad-11d1-80b4-00c04fd430c8'\n" +
+    '  },\n' +
+    '  v4: [Function: v4],\n' +
+    '  v5: [Function: generateUUID] {\n' +
+    "    DNS: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',\n" +
+    "    URL: '6ba7b811-9dad-11d1-80b4-00c04fd430c8'\n" +
+    '  }\n' +
+    '}" at path "_id"',
+  level: 'error'
+}
+{
+  statusCode: 500,
+  message: 'Cast to string failed for value "{\n' +
+    '  v1: [Function: v1],\n' +
+    '  v3: [Function: generateUUID] {\n' +
+    "    DNS: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',\n" +
+    "    URL: '6ba7b811-9dad-11d1-80b4-00c04fd430c8'\n" +
+    '  },\n' +
+    '  v4: [Function: v4],\n' +
+    '  v5: [Function: generateUUID] {\n' +
+    "    DNS: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',\n" +
+    "    URL: '6ba7b811-9dad-11d1-80b4-00c04fd430c8'\n" +
+    '  }\n' +
+    '}" at path "_id"',
+  level: 'error'
+}
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error:500: INTERNAL_SERVER_ERROR' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{
+  level: 'error',
+  message: 'error: 11000: E11000 duplicate key error collection: youtube.users index: _id_ dup key: { _id: "12680b72-9a1e-49b4-bcae-919a21f51209" }'
+}
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: User already exists' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{
+  level: 'error',
+  message: 'error: ERR_HTTP_HEADERS_SENT: Cannot set headers after they are sent to the client'
+}
+{
+  level: 'error',
+  message: 'error: ERR_HTTP_HEADERS_SENT: Cannot set headers after they are sent to the client'
+}
+{
+  level: 'error',
+  message: 'error: ERR_HTTP_HEADERS_SENT: Cannot set headers after they are sent to the client'
+}
+{
+  level: 'error',
+  message: 'error: ERR_HTTP_HEADERS_SENT: Cannot set headers after they are sent to the client'
+}
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }
+{ level: 'error', message: 'error: 403: Access forbidden' }

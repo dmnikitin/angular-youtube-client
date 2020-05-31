@@ -45,7 +45,7 @@ export function provideConfig(): AuthServiceConfig {
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [
     LoadDataService,

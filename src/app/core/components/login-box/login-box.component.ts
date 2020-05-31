@@ -17,18 +17,21 @@ export class LoginBoxComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.authService.checkAuthentication();
   }
 
   public logout(): void {
-    this.socialService.signOut();
-    this.authService.logout();
-    window.location.reload();
-    for (let prop in this.loadDataService.data) {
-      if (this.loadDataService.data.hasOwnProperty(prop)) {
-        delete this.loadDataService.data[prop];
-      }
+    if (this.authService.$isLoggedWithGoogle.value) {
+      this.authService.$isLoggedWithGoogle.next(false);
+      this.socialService.signOut();
+    } else {
+      this.authService.logout();
     }
+    // window.location.reload();
+    // for (let prop in this.loadDataService.data) {
+    //   if (this.loadDataService.data.hasOwnProperty(prop)) {
+    //     delete this.loadDataService.data[prop];
+    //   }
+    // }
 
   }
 }
