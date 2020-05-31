@@ -1,4 +1,4 @@
-import IUser from './user.interface';
+import { IUser } from './interfaces';
 export type createTokenFn = (login: string, id: string) => Promise<string>;
 export type checkPasswordFn = (provided: string, original: string) => Promise<boolean>;
 export type checkRegistrationFn = (login: string) => Promise<IUser>;
