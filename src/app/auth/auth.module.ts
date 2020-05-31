@@ -1,4 +1,3 @@
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,6 @@ import { GoogleAuthComponent } from './components/google-auth/google-auth.compon
     CommonModule,
     FormsModule,
     SharedModule,
-    RouterModule,
     ReactiveFormsModule,
   ],
   exports: [LoginPageComponent]
