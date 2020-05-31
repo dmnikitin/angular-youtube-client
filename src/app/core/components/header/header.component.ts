@@ -1,10 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { EMPTY, from, of } from 'rxjs';
+import { EMPTY, from } from 'rxjs';
 import { debounceTime, switchMap, catchError } from 'rxjs/operators';
 import { AuthService } from './../../../auth/services/auth.service';
 import { LoadDataService } from '../../services/load-data.service';
 import { ISearchResponse } from './../../../youtube/models/search-response.model';
+import errorCallback from '../../../shared/helpers/error-callback';
 
 @Component({
   selector: 'app-header',
@@ -23,34 +24,28 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.authService.checkAuthentication();
     this.loadDataService.searchQuery
       .pipe(
         debounceTime(2000),
         switchMap((query: string) => {
           if (query.length > 3) {
-            return from(this.authService.checkAuthentication()).pipe(
+            return from(this.authService.$isAuthenticated).pipe(
               switchMap( (response: boolean) => {
                 if (response) {
                   this.router.navigate(['/videos'], { queryParams: { search_query: query } });
                   return from(this.loadDataService.getData(query));
                 } else {
-                  alert ('please login to search videos');
                   return EMPTY;
                 }
               }),
-              catchError((error) => {
-                console.log('error: ', error);
-                return of(error);
-              })
+              catchError(errorCallback)
           );
           } else {
             return EMPTY;
           }
         }),
-        catchError((error) => {
-          console.log('error: ', error);
-          return of(error);
-        })
+        catchError(errorCallback)
       )
       .subscribe((data: ISearchResponse) => {
         this.loadDataService.data = data;
