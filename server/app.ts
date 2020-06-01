@@ -7,7 +7,7 @@ import loggerMiddleware from './middlewares/logger';
 import errorMidlleware from './middlewares/error';
 
 const app: express.Express = express();
-const dir: string = path.join(__dirname, 'build');
+const dir: string = path.join(__dirname, '../dist/angular-youtube');
 
 app.use(express.json());
 app.use(express.static(dir));
