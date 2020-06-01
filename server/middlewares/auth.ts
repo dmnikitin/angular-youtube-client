@@ -4,9 +4,10 @@ import config from '../common/config';
 import { IRequest } from './../models/interfaces';
 
 const { JWT_SECRET_KEY } = config;
+const allowedRoutes: string[] = ['/', '/login', '/signup', '/token', '/favicon.ico'];
 
 export default function authMiddleware (req: IRequest, res: Response, next: NextFunction): void {
-  if (req.url === '/login' || req.url === '/signup' || req.url === '/token') {
+  if (allowedRoutes.indexOf(req.url) !== -1) {
     return next();
   }
   if (req.headers.authorization) {
