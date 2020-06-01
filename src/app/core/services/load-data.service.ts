@@ -25,7 +25,7 @@ export class LoadDataService {
       .set('q', query)
       .set('type', 'video');
 
-    return this.http.get<ISearchResponse>('http://localhost:4000/search', { params })
+    return this.http.get<ISearchResponse>('/search', { params })
       .pipe(
         pluck('items'),
         switchMap((items: []) => from(items)),
@@ -45,6 +45,6 @@ export class LoadDataService {
       .set('part', 'snippet,statistics')
       .set('id', idString);
 
-    return this.http.get<ISearchResponse>('http://localhost:4000/videos', { params });
+    return this.http.get<ISearchResponse>('/videos', { params });
   }
 }

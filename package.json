@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node -r ts-node/register ./server/server.ts",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node -r ts-node/register ./server/server.ts"
+    "serve": "ng serve",
+    "postinstall": "ng build --output-path dist"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15",
+    "node-fetch": "^2.6.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "uuid": "^8.1.0",

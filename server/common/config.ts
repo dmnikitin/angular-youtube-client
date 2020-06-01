@@ -13,7 +13,7 @@ interface IConfig {
 }
 
 const config: IConfig = {
-  PORT: process.env.PORT,
+  PORT: process.env.PORT || '4200',
   MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
   JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
   API_KEY: process.env.API_KEY,

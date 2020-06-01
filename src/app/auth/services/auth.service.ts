@@ -17,7 +17,7 @@ export class AuthService {
 
   public login(login: string, password: string): Observable<{token: string}> {
     const body: IUser = { login, password };
-    return this.http.post<{token: string}>('http://localhost:4000/login', body)
+    return this.http.post<{token: string}>('/login', body)
       .pipe(
         map(data => {
           localStorage.setItem('authToken', data.token);
@@ -31,7 +31,7 @@ export class AuthService {
 
   public signup(login: string, password: string): Observable<IUser | null> {
     const body: IUser = { login, password };
-    return this.http.post<IUser>('http://localhost:4000/signup', body)
+    return this.http.post<IUser>('/signup', body)
       .pipe(
         map(data => data),
         catchError(errorCallback)
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   public checkAuthentication(): void {
-    this.http.get('http://localhost:4000/auth')
+    this.http.get('/auth')
       .subscribe( (data: IUser) => {
         if (data) {
           this.$isAuthenticated.next(true);
@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   public authenticateWithGoogle(login: string): void {
-    this.http.post('http://localhost:4000/token', {login})
+    this.http.post('/token', {login})
       .subscribe( (data: {token: string}) => {
         if (data) {
           localStorage.setItem('authToken', data.token);
