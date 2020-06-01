@@ -9,8 +9,8 @@ import errorCallback from '../../shared/helpers/error-callback';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  public $isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public $login: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public $isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public $isLoggedWithGoogle: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router, private http: HttpClient) { }
@@ -21,7 +21,6 @@ export class AuthService {
       .pipe(
         map(data => {
           localStorage.setItem('authToken', data.token);
-          localStorage.setItem('userName', login);
           this.$isAuthenticated.next(true);
           this.$login.next(login);
           return data;
@@ -39,14 +38,6 @@ export class AuthService {
       );
   }
 
-  public logout(): void {
-    this.$isAuthenticated.next(false);
-    this.$login.next('');
-    this.router.navigate(['']);
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userName');
-  }
-
   public checkAuthentication(): void {
     this.http.get('http://localhost:4000/auth')
       .subscribe( (data: IUser) => {
@@ -58,10 +49,26 @@ export class AuthService {
       });
   }
 
-  public authenticateWithGoogle(userName: string): void {
-    this.$isLoggedWithGoogle.next(true);
-    this.$isAuthenticated.next(true);
-    this.$login.next(userName);
-    this.router.navigate(['/videos']);
+  public authenticateWithGoogle(login: string): void {
+    this.http.post('http://localhost:4000/token', {login})
+      .subscribe( (data: {token: string}) => {
+        if (data) {
+          localStorage.setItem('authToken', data.token);
+          this.$isLoggedWithGoogle.next(true);
+          this.$isAuthenticated.next(true);
+          this.$login.next(login);
+          this.router.navigate(['/videos']);
+        }
+      });
+  }
+
+  public logout(isLoggedWithGoogle?: boolean): void {
+    if (isLoggedWithGoogle) {
+      this.$isLoggedWithGoogle.next(false);
+    }
+    this.$isAuthenticated.next(false);
+    this.$login.next('');
+    this.router.navigate(['']);
+    localStorage.removeItem('authToken');
   }
 }
