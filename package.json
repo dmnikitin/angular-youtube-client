@@ -37,7 +37,10 @@
     "rxjs": "~6.5.5",
     "ts-node": "^8.10.2",
     "tslib": "^1.13.0",
+<<<<<<< HEAD
     "typescript": "^3.8.3",
+=======
+>>>>>>> 88f5e3fb1290ddadd9576383d72894aa008961ae
     "uuid": "^8.1.0",
     "winston": "^3.2.1",
     "zone.js": "~0.10.2"
@@ -62,6 +65,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "protractor": "^5.4.4",
-    "tslint": "~5.15.0"
+    "tslint": "~5.15.0",
+    "typescript": "^3.8.3"
   }
 }
