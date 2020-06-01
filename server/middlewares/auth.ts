@@ -6,7 +6,7 @@ import { IRequest } from './../models/interfaces';
 const { JWT_SECRET_KEY } = config;
 
 export default function authMiddleware (req: IRequest, res: Response, next: NextFunction): void {
-  if (req.url === '/login' || req.url === '/signup') {
+  if (req.url === '/login' || req.url === '/signup' || req.url === '/token') {
     return next();
   }
   if (req.headers.authorization) {
