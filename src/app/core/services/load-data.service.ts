@@ -8,7 +8,6 @@ import { ISearchItemInitial } from './../../youtube/models/search-item.model';
 @Injectable()
 export class LoadDataService {
 
-  private readonly URL: string = 'https://www.googleapis.com/youtube/v3/';
   private _data: ISearchResponse;
   get data(): ISearchResponse { return this._data; }
   set data(value: ISearchResponse) { this._data = value; }
@@ -26,7 +25,7 @@ export class LoadDataService {
       .set('q', query)
       .set('type', 'video');
 
-    return this.http.get<ISearchResponse>(`${this.URL}search`, { params })
+    return this.http.get<ISearchResponse>('http://localhost:4000/search', { params })
       .pipe(
         pluck('items'),
         switchMap((items: []) => from(items)),
@@ -46,6 +45,6 @@ export class LoadDataService {
       .set('part', 'snippet,statistics')
       .set('id', idString);
 
-    return this.http.get<ISearchResponse>(`${this.URL}videos`, { params });
+    return this.http.get<ISearchResponse>('http://localhost:4000/videos', { params });
   }
 }

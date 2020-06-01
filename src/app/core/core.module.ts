@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
 const config: AuthServiceConfig = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider(environment.authKey)
+    provider: new GoogleLoginProvider(environment.authKey),
   }
 ]);
 
