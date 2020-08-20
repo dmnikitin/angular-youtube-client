@@ -27,7 +27,7 @@
     "@types/mongoose": "^5.7.21",
     "@types/node": "^14.0.6",
     "angularx-social-login": "^2.3.1",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
